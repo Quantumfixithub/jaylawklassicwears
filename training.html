@@ -1,0 +1,2721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Training Programs | Jay Law Klassic Wears</title>
+  <meta name="description" content="Professional fashion design and tailoring training. Learn from expert instructors with hands-on practice. Beginner to advanced courses available.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #8D6E63;
+      --cream: #FFF8E7;
+      --gold: #D4AF37;
+      --gold-dark: #B8941E;
+      --gold-light: #E5C158;
+      --white: #FFFFFF;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #E5C158 100%);
+      --coffee-gradient: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--coffee-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Loading Screen */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--coffee-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+     /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 248, 231, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 20px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px var(--shadow);
+      transition: padding 0.3s ease, background 0.3s ease;
+      border-bottom: 2px solid var(--gold-light);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      background: rgba(62, 39, 35, 0.98);
+    }
+
+    header.scrolled .logo,
+    header.scrolled nav a {
+      color: var(--gold);
+    }
+
+    header.scrolled nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+  display: flex;              /* put image + text side by side */
+  align-items: center;        /* vertically align */
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo img {
+  height: 40px;               /* adjust logo size */
+  width: auto;
+  margin-right: 10px;         /* space between image and text */
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--coffee-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-dark);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+
+/* Page Hero */
+.page-hero {
+  height: 50vh;
+  min-height: 400px;
+  background: 
+    linear-gradient(rgba(226, 190, 83, 0.65), rgba(226, 190, 83, 0.65)), 
+    url('https://www.thedesignvillage.org/wp-content/uploads/2024/10/HAK_2492.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff; /* force white text globally */
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(226,190,83,0.3) 100%);
+  opacity: 0.4;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-subtitle {
+  font-size: 1.2em;
+  color: var(--gold);
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4em;
+  font-weight: 800;
+  color: #ffffff; /* white */
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5); /* keep readability */
+}
+
+.page-hero p {
+  font-size: 1.3em;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #ffffff; /* white */
+  line-height: 1.8;
+}
+
+
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .breadcrumb a {
+      color: var(--coffee-medium);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold-dark);
+    }
+
+    .breadcrumb span {
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    /* Training Section */
+    .training-section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-subtitle {
+      color: var(--gold);
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: var(--coffee-dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .section-description {
+      font-size: 1.1em;
+      color: var(--coffee-medium);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Training Stats */
+    .training-stats {
+      background: var(--coffee-gradient);
+      padding: 60px 40px;
+      border-radius: 20px;
+      margin-bottom: 80px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item {
+      color: var(--gold-light);
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .program-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+    }
+
+    .program-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.85em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .program-badge.popular {
+      background: linear-gradient(135deg, #E53935 0%, #FF5252 100%);
+      color: var(--white);
+    }
+
+    .program-badge.new {
+      background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+      color: var(--white);
+    }
+
+    .program-image {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(62, 39, 35, 0.7) 100%);
+      transition: opacity 0.3s ease;
+    }
+
+    .program-card:hover .program-image::before {
+      opacity: 0.5;
+    }
+
+    .program-content {
+      padding: 35px;
+    }
+
+    .program-category {
+      color: var(--gold);
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .program-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      color: var(--coffee-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .program-description {
+      color: var(--coffee-medium);
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    .program-features {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .program-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--coffee-medium);
+    }
+
+    .program-features li i {
+      color: var(--gold);
+      font-size: 1.1em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .program-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--cream);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--coffee-medium);
+      font-size: 0.95em;
+    }
+
+    .meta-item i {
+      color: var(--gold);
+    }
+
+    .program-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .program-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    .program-price span {
+            font-size: 0.5em;
+      color: var(--coffee-medium);
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .enroll-btn {
+      flex: 1;
+      padding: 15px 30px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 10px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .enroll-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .enroll-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Why Choose Us */
+    .why-section {
+      background: var(--cream);
+      padding: 80px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 25px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 2em;
+      color: var(--coffee-dark);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color: var(--coffee-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .feature-description {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+    }
+
+    /* Instructors Section */
+    .instructors-section {
+      padding: 80px 0;
+    }
+
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .instructor-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px var(--shadow);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .instructor-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .instructor-image {
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .instructor-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(62, 39, 35, 0.9) 100%);
+    }
+
+    .instructor-social {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .instructor-card:hover .instructor-social {
+      opacity: 1;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: scale(1.2);
+    }
+
+    .instructor-info {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .instructor-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      color: var(--coffee-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .instructor-title {
+      color: var(--gold);
+      font-size: 1em;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .instructor-bio {
+      color: var(--coffee-medium);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .instructor-stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--cream);
+    }
+
+    .instructor-stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--gold-dark);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85em;
+      color: var(--coffee-medium);
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      background: var(--coffee-gradient);
+      padding: 80px 0;
+    }
+
+    .testimonials-section .section-subtitle,
+    .testimonials-section .section-description {
+      color: var(--gold-light);
+    }
+
+    .testimonials-section .section-title {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .testimonial-rating {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-rating i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .testimonial-text {
+      color: var(--gold-light);
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .author-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-name {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .author-course {
+      color: var(--gold-light);
+      font-size: 0.9em;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 0;
+      background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)),
+                  url('https://images.unsplash.com/photo-1519167758481-83f29da8c875?w=1600&q=80') center/cover fixed;
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      margin-bottom: 25px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .cta-description {
+      font-size: 1.3em;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      padding: 18px 40px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cta-btn-primary {
+      background: var(--gradient);
+      color: var(--coffee-dark);
+    }
+
+    .cta-btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+    }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    .cta-btn-secondary:hover {
+      background: var(--gold);
+      color: var(--coffee-dark);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 80px 0;
+      background: var(--cream);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .faq-question {
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: var(--cream);
+    }
+
+    .faq-question h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+
+    .faq-icon {
+      width: 35px;
+      height: 35px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 30px 25px;
+    }
+
+    .faq-answer p {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+    }
+
+    /* Enrollment Modal */
+    .enrollment-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+    }
+
+    .enrollment-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      padding: 40px;
+      background: var(--coffee-gradient);
+      text-align: center;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 50%;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+             font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .modal-subtitle {
+      color: var(--gold-light);
+      font-size: 1.1em;
+    }
+
+    .modal-body {
+      padding: 40px;
+    }
+
+    .enrollment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 15px;
+      border: 2px solid var(--cream);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+      background: var(--white);
+      color: var(--coffee-dark);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .submit-btn {
+      padding: 18px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 10px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: -100px;
+      right: 30px;
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 10002;
+      transition: bottom 0.4s ease;
+      max-width: 400px;
+    }
+
+    .toast.show {
+      bottom: 30px;
+    }
+
+    .toast i {
+      font-size: 1.5em;
+      color: var(--gold);
+    }
+
+    .toast-message {
+      flex: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--coffee-gradient);
+      color: var(--gold-light);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: rgba(212, 175, 55, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      transform: translateY(-5px);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 8px;
+    }
+
+    .footer-links a i {
+      font-size: 0.8em;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-item i {
+      color: var(--gold);
+      font-size: 1.2em;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+      font-size: 0.95em;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.7);
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse-whatsapp 2s infinite;
+      text-decoration: none;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      animation: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 30px;
+      }
+
+      .programs-grid,
+      .instructors-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .stat-number {
+        font-size: 3em;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2.5em;
+      }
+
+      .page-hero h1 {
+        font-size: 3em;
+      }
+
+      .cta-title {
+        font-size: 2.8em;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--coffee-dark);
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        gap: 25px;
+        align-items: flex-start;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        color: var(--gold-light);
+        font-size: 1.1em;
+        width: 100%;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      .page-hero {
+        height: 50vh;
+        min-height: 400px;
+      }
+
+      .page-hero h1 {
+        font-size: 2.5em;
+      }
+
+      .page-hero p {
+        font-size: 1.1em;
+      }
+
+      .section-title {
+        font-size: 2em;
+      }
+
+      .programs-grid,
+      .features-grid,
+      .instructors-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .stat-number {
+        font-size: 2.5em;
+      }
+
+      .cta-title {
+        font-size: 2.2em;
+      }
+
+      .cta-description {
+        font-size: 1.1em;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .back-to-top,
+      .whatsapp-float {
+        right: 20px;
+      }
+
+      .whatsapp-float {
+        bottom: 90px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8em;
+      }
+
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3em;
+      }
+
+      .toast {
+        right: 20px;
+        left: 20px;
+        max-width: calc(100% - 40px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.5em;
+      }
+
+      .page-hero {
+        margin-top: 70px;
+      }
+
+      .page-hero h1 {
+        font-size: 2em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+
+      .program-content,
+      .instructor-info,
+      .testimonial-card,
+      .feature-card {
+        padding: 25px;
+      }
+
+      .stat-number {
+        font-size: 2em;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .program-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .modal-content {
+        margin: 10px;
+      }
+
+      .modal-header,
+      .modal-body {
+        padding: 30px 20px;
+      }
+
+      .modal-title {
+        font-size: 1.8em;
+      }
+
+      .cta-title {
+        font-size: 1.8em;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      header, footer, .back-to-top, .whatsapp-float, .cta-section, .enrollment-modal, .toast {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .program-card,
+      .instructor-card {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Accessibility */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen
+  <div class="loader">
+    <div class="loader-logo">Jay Law Klassic</div>
+  </div>-->
+
+   <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+     <a href="index.html" class="logo">
+  <!--<img src="Jay-Law_logo.jpg" alt="Jay-Law Klassic Wears Logo">-->
+  Jay-Law <span>Klassic Wears</span>
+</a>
+
+        <nav id="nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html">Contact</a>
+	  <a href="cart.html">Cart</a>
+	    <div class="nav-icons">
+            <a href="account.html" class="nav-icon" title="My Account">
+              <i class="fas fa-user"></i>
+            </a>
+            
+          </div>
+        </nav>
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i>
+</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-subtitle">Master Your Craft</p>
+      <h1>Fashion Training</h1>
+      <p>Transform your passion into profession with expert-led courses designed for aspiring designers and tailors.</p>
+    </div>
+  </section>
+
+
+  <!-- Training Stats -->
+  <section class="training-section">
+    <div class="container">
+     
+
+      <!-- Section Header -->
+      <div class="section-header">
+        <p class="section-subtitle">Our Programs</p>
+        <h2 class="section-title">Choose Your Path</h2>
+        <p class="section-description">From beginner basics to advanced techniques, we offer comprehensive training programs designed to turn your fashion dreams into reality.</p>
+      </div>
+
+      <!-- Programs Grid -->
+      <div class="programs-grid">
+        <!-- Program 1 -->
+        <div class="program-card" data-program="beginner">
+          <div class="program-badge new">New</div>
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea3c1c1f?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Foundation Course</div>
+            <h3 class="program-title">Beginner Fashion Design</h3>
+            <p class="program-description">Perfect for absolute beginners. Learn the fundamentals of fashion design, pattern making, and basic sewing techniques.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Introduction to Fashion Design</li>
+              <li><i class="fas fa-check-circle"></i> Basic Pattern Making</li>
+              <li><i class="fas fa-check-circle"></i> Sewing Machine Operations</li>
+              <li><i class="fas fa-check-circle"></i> Fabric Selection Guide</li>
+              <li><i class="fas fa-check-circle"></i> 5 Complete Projects</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>3 Months</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>3x Weekly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 15</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦85,000
+                
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card" data-program="intermediate">
+          <div class="program-badge popular">Popular</div>
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Intermediate Level</div>
+            <h3 class="program-title">Advanced Pattern Making</h3>
+            <p class="program-description">Take your skills to the next level with advanced pattern techniques, draping, and garment construction methods.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Advanced Pattern Drafting</li>
+              <li><i class="fas fa-check-circle"></i> Draping Techniques</li>
+              <li><i class="fas fa-check-circle"></i> Complex Garment Construction</li>
+              <li><i class="fas fa-check-circle"></i> Alterations & Fitting</li>
+              <li><i class="fas fa-check-circle"></i> 8 Complete Projects</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>4 Months</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>4x Weekly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 12</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦150,000
+               
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card" data-program="professional">
+          <div class="program-badge">Premium</div>
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Professional Level</div>
+            <h3 class="program-title">Bespoke Tailoring Mastery</h3>
+            <p class="program-description">Master the art of bespoke tailoring with expert techniques in suits, traditional wear, and haute couture.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Bespoke Suit Making</li>
+              <li><i class="fas fa-check-circle"></i> Traditional Nigerian Attire</li>
+              <li><i class="fas fa-check-circle"></i> Haute Couture Techniques</li>
+              <li><i class="fas fa-check-circle"></i> Business Management for Tailors</li>
+              <li><i class="fas fa-check-circle"></i> 12 Complete Projects</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>6 Months</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>5x Weekly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 10</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦280,000
+                
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 4 -->
+        <div class="program-card" data-program="illustration">
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Specialization</div>
+            <h3 class="program-title">Fashion Illustration & Design</h3>
+            <p class="program-description">Bring your designs to life with professional fashion illustration techniques, digital design, and portfolio development.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Fashion Sketching Basics</li>
+              <li><i class="fas fa-check-circle"></i> Digital Design Tools (Adobe Suite)</li>
+              <li><i class="fas fa-check-circle"></i> Color Theory & Textiles</li>
+              <li><i class="fas fa-check-circle"></i> Portfolio Development</li>
+              <li><i class="fas fa-check-circle"></i> 10 Complete Projects</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>3 Months</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>3x Weekly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 12</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦120,000
+                
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 5 -->
+        <div class="program-card" data-program="business">
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Business Skills</div>
+            <h3 class="program-title">Fashion Business Management</h3>
+            <p class="program-description">Learn how to turn your fashion skills into a profitable business with marketing, branding, and client management strategies.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Business Planning & Strategy</li>
+              <li><i class="fas fa-check-circle"></i> Brand Development</li>
+              <li><i class="fas fa-check-circle"></i> Social Media Marketing</li>
+              <li><i class="fas fa-check-circle"></i> Client Relations</li>
+              <li><i class="fas fa-check-circle"></i> Financial Management</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>2 Months</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>2x Weekly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 20</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦95,000
+                
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 6 -->
+        <div class="program-card" data-program="weekend">
+          <div class="program-badge new">Limited Slots</div>
+          <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f29da8c875?w=800&q=80')"></div>
+          <div class="program-content">
+            <div class="program-category">Weekend Intensive</div>
+            <h3 class="program-title">Weekend Fashion Workshop</h3>
+            <p class="program-description">Perfect for busy professionals. Learn essential fashion skills in intensive weekend sessions over 8 weeks.</p>
+            
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Flexible Weekend Schedule</li>
+              <li><i class="fas fa-check-circle"></i> Practical Hands-On Training</li>
+              <li><i class="fas fa-check-circle"></i> Core Fashion Skills</li>
+              <li><i class="fas fa-check-circle"></i> Certificate of Completion</li>
+              <li><i class="fas fa-check-circle"></i> 4 Complete Projects</li>
+            </ul>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>8 Weekends</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>Sat & Sun</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 15</span>
+              </div>
+            </div>
+
+            <div class="program-footer">
+              <div class="program-price">
+                ₦110,000
+               
+              </div>
+              <button class="enroll-btn">
+                <i class="fas fa-graduation-cap"></i>
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Why Choose Us</p>
+        <h2 class="section-title">Learn From The Best</h2>
+        <p class="section-description">We provide world-class training with experienced instructors, modern facilities, and a proven track record of success.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3 class="feature-title">Expert Instructors</h3>
+          <p class="feature-description">Learn from industry professionals with 15+ years of experience in fashion design and tailoring.</p>
+        </div>
+
+                <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3 class="feature-title">Modern Equipment</h3>
+          <p class="feature-description">Access to state-of-the-art sewing machines, cutting tools, and design software.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3 class="feature-title">Hands-On Training</h3>
+          <p class="feature-description">Practical, project-based learning with real-world applications and portfolio building.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3 class="feature-title">Certification</h3>
+          <p class="feature-description">Receive recognized certificates upon completion to boost your professional credibility.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-clock"></i>
+          </div>
+          <h3 class="feature-title">Flexible Schedule</h3>
+          <p class="feature-description">Choose from weekday, weekend, or evening classes that fit your lifestyle.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3 class="feature-title">Career Support</h3>
+          <p class="feature-description">Get job placement assistance and business guidance to launch your fashion career.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructors Section -->
+  <section class="instructors-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Meet Our Team</p>
+        <h2 class="section-title">Expert Instructors</h2>
+        <p class="section-description">Our team of passionate professionals brings decades of combined experience in fashion design, tailoring, and business.</p>
+      </div>
+
+      <div class="instructors-grid">
+        <!-- Instructor 1 -->
+        <div class="instructor-card">
+          <div class="instructor-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')">
+            <div class="instructor-social">
+              <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="instructor-info">
+            <h3 class="instructor-name">Adaeze Okonkwo</h3>
+            <p class="instructor-title">Head Instructor</p>
+            <p class="instructor-bio">With 18 years in haute couture, Adaeze specializes in bespoke tailoring and traditional Nigerian fashion design.</p>
+            <div class="instructor-stats">
+              <div class="instructor-stat">
+                <span class="stat-value">300+</span>
+                <div class="stat-label">Students</div>
+              </div>
+              <div class="instructor-stat">
+                <span class="stat-value">18</span>
+                <div class="stat-label">Years Exp</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instructor 2 -->
+        <div class="instructor-card">
+          <div class="instructor-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80')">
+            <div class="instructor-social">
+              <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="instructor-info">
+            <h3 class="instructor-name">Chidi Eze</h3>
+            <p class="instructor-title">Pattern Making Expert</p>
+            <p class="instructor-bio">Master pattern maker with expertise in menswear, draping techniques, and garment construction.</p>
+            <div class="instructor-stats">
+              <div class="instructor-stat">
+                <span class="stat-value">250+</span>
+                <div class="stat-label">Students</div>
+              </div>
+              <div class="instructor-stat">
+                <span class="stat-value">15</span>
+                <div class="stat-label">Years Exp</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instructor 3 -->
+        <div class="instructor-card">
+          <div class="instructor-image" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80')">
+            <div class="instructor-social">
+              <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="instructor-info">
+            <h3 class="instructor-name">Ngozi Adekunle</h3>
+            <p class="instructor-title">Fashion Illustration Lead</p>
+            <p class="instructor-bio">Award-winning fashion illustrator and digital design specialist with international portfolio.</p>
+            <div class="instructor-stats">
+              <div class="instructor-stat">
+                <span class="stat-value">180+</span>
+                <div class="stat-label">Students</div>
+              </div>
+              <div class="instructor-stat">
+                <span class="stat-value">12</span>
+                <div class="stat-label">Years Exp</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Success Stories</p>
+        <h2 class="section-title">What Our Students Say</h2>
+        <p class="section-description">Hear from our graduates who have transformed their passion into thriving fashion careers.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"The training I received here transformed my hobby into a full-time business. The instructors are incredibly knowledgeable and supportive. I now run my own fashion boutique!"</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80" alt="Blessing Okafor" class="author-image">
+            <div class="author-info">
+              <div class="author-name">Blessing Okafor</div>
+              <div class="author-course">Bespoke Tailoring Graduate 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Best investment I've ever made! The hands-on approach and modern equipment made learning so much easier. I'm now working with top fashion brands in Lagos."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" alt="Emmanuel Nwosu" class="author-image">
+            <div class="author-info">
+              <div class="author-name">Emmanuel Nwosu</div>
+              <div class="author-course">Advanced Pattern Making 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"From zero to hero! The instructors patiently guided me through every step. The business management course was especially valuable for starting my own brand."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80" alt="Chioma Adesanya" class="author-image">
+            <div class="author-info">
+              <div class="author-name">Chioma Adesanya</div>
+              <div class="author-course">Weekend Workshop Graduate 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Start Your Journey?</h2>
+        <p class="cta-description">Join hundreds of successful graduates who have turned their passion for fashion into thriving careers. Limited slots available for our next intake!</p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-btn cta-btn-primary" id="ctaEnrollBtn">
+            <i class="fas fa-graduation-cap"></i>
+            Enroll Today
+          </a>
+          <a href="contact.html" class="cta-btn cta-btn-secondary">
+            <i class="fas fa-phone-alt"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Common Questions</p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">Find answers to the most common questions about our training programs.</p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do I need prior experience to enroll?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>No prior experience is required for our beginner courses. We welcome complete beginners and provide all the foundational knowledge you need. For intermediate and advanced courses, some basic sewing knowledge is recommended.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What materials do I need to bring?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>All major equipment including sewing machines, cutting tables, and tools are provided. You only need to bring fabric for your projects (we'll provide a list), a notebook, and your enthusiasm to learn!</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are payment plans available?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer flexible payment plans for all courses. You can pay in 2-3 installments depending on the program. Contact us to discuss the best payment option for you.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Will I receive a certificate upon completion?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! All students who successfully complete their courses receive a professional certificate recognized in the fashion industry. We also provide portfolio guidance and reference letters.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the class size?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>We maintain small class sizes (10-20 students maximum) to ensure personalized attention and hands-on guidance from instructors. This allows for better learning outcomes and individual support.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer job placement assistance?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We have partnerships with fashion houses, boutiques, and design studios. We also provide business mentorship for those wanting to start their own fashion businesses, including guidance on branding, marketing, and client acquisition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment Modal -->
+  <div class="enrollment-modal" id="enrollmentModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+                <button class="close-modal" id="closeModal" aria-label="Close enrollment form">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title">Enroll Now</h2>
+        <p class="modal-subtitle">Start your fashion journey today</p>
+      </div>
+      <div class="modal-body">
+        <form class="enrollment-form" id="enrollmentForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="program">Select Program *</label>
+            <select id="program" name="program" required>
+              <option value="">-- Choose a Program --</option>
+              <option value="beginner">Beginner Fashion Design - ₦85,000</option>
+              <option value="intermediate">Advanced Pattern Making - ₦150,000</option>
+              <option value="professional">Bespoke Tailoring Mastery - ₦280,000</option>
+              <option value="illustration">Fashion Illustration & Design - ₦120,000</option>
+              <option value="business">Fashion Business Management - ₦95,000</option>
+              <option value="weekend">Weekend Fashion Workshop - ₦110,000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Preferred Start Date *</label>
+            <select id="startDate" name="startDate" required>
+              <option value="">-- Select Start Date --</option>
+              <option value="march-2024">March 2024</option>
+              <option value="april-2024">April 2024</option>
+              <option value="may-2024">May 2024</option>
+              <option value="june-2024">June 2024</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Fashion Experience Level *</label>
+            <select id="experience" name="experience" required>
+              <option value="">-- Select Experience Level --</option>
+              <option value="beginner">Complete Beginner</option>
+              <option value="some">Some Experience</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Why do you want to learn fashion design? (Optional)</label>
+            <textarea id="message" name="message" placeholder="Tell us about your goals and aspirations..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Submit Enrollment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <div class="toast-message" id="toastMessage">Enrollment submitted successfully!</div>
+  </div>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop" role="button" aria-label="Back to top" tabindex="0">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/2348034567890" target="_blank" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Jay Law Klassic Wears</h3>
+          <p>Empowering the next generation of fashion designers and tailors through world-class training and mentorship.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Training</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Our Programs</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Beginner Courses</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Advanced Training</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Weekend Workshops</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Business Skills</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Private Tutoring</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Fashion Street, Wuse 2, Abuja, Nigeria</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+234 803 456 7890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>training@jaylawklassic.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+// auth.js
+function requireLogin(redirectIfNot = true) {
+  const user = JSON.parse(localStorage.getItem('jaylawUser') || 'null');
+  if (!user) {
+    if (redirectIfNot) {
+      const thisPath = location.pathname.split('/').pop() || 'index.html';
+      // preserve query and hash if needed:
+      const redirectUrl = `${thisPath}${location.search}${location.hash}`;
+      location.href = `login.html?redirect=${encodeURIComponent(redirectUrl)}`;
+    }
+    return null;
+  }
+  return user;
+}
+
+function signOut() {
+  localStorage.removeItem('jaylawUser');
+  // optional: remove cart/wishlist for demo:
+  // localStorage.removeItem('jaylawCart');
+  // localStorage.removeItem('jaylawWishlist');
+  location.href = 'login.html';
+}
+    // DOM Elements
+    const header = document.getElementById('header');
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const enrollBtns = document.querySelectorAll('.enroll-btn');
+    const ctaEnrollBtn = document.getElementById('ctaEnrollBtn');
+    const enrollmentModal = document.getElementById('enrollmentModal');
+    const closeModal = document.getElementById('closeModal');
+    const enrollmentForm = document.getElementById('enrollmentForm');
+    const programSelect = document.getElementById('program');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const backToTop = document.getElementById('backToTop');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    // Toast Notification Function
+    let toastTimeout;
+    function showToast(message, duration = 3000) {
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Back to Top Button
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Mobile Menu Toggle
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Enrollment Modal Functions
+    function openEnrollmentModal(programType = '') {
+      enrollmentModal.classList.add('active');
+      enrollmentModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Pre-select program if clicked from a specific card
+      if (programType) {
+        programSelect.value = programType;
+      }
+      
+      // Focus on first input
+      setTimeout(() => {
+        document.getElementById('firstName').focus();
+      }, 100);
+    }
+
+    function closeEnrollmentModal() {
+      enrollmentModal.classList.remove('active');
+      enrollmentModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Enroll button clicks from program cards
+    enrollBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = btn.closest('.program-card');
+        const programType = card ? card.dataset.program : '';
+        openEnrollmentModal(programType);
+      });
+    });
+
+    // CTA Enroll button
+    if (ctaEnrollBtn) {
+      ctaEnrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openEnrollmentModal();
+      });
+    }
+
+    // Close modal button
+    closeModal.addEventListener('click', closeEnrollmentModal);
+
+    // Close modal when clicking outside
+    enrollmentModal.addEventListener('click', (e) => {
+      if (e.target === enrollmentModal) {
+        closeEnrollmentModal();
+      }
+    });
+
+    // Form Submission
+    enrollmentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = enrollmentForm.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      
+      // Get form data
+      const formData = new FormData(enrollmentForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Simulate API call (replace with actual API endpoint)
+      try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        console.log('Enrollment Data:', data);
+        
+        // Show success message
+        showToast('🎉 Enrollment submitted successfully! We\'ll contact you soon.', 5000);
+        
+        // Reset form and close modal
+        enrollmentForm.reset();
+        closeEnrollmentModal();
+        
+      } catch (error) {
+        showToast('❌ Submission failed. Please try again.', 4000);
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    // FAQ Accordion
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        faqItems.forEach(faq => {
+          faq.classList.remove('active');
+        });
+        
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Back to Top
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    backToTop.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    // Keyboard Accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (enrollmentModal.classList.contains('active')) {
+          closeEnrollmentModal();
+        }
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Intersection Observer for Animation on Scroll
+    const observerOptions = {
+      threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.program-card, .feature-card, .instructor-card, .testimonial-card, .faq-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Loading Screen
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 800);
+    });
+
+    // Prevent FOUC (Flash of Unstyled Content)
+    document.documentElement.style.visibility = 'visible';
+
+    // Console Message
+    console.log('%c🎓 Jay Law Klassic Wears - Training Page', 'color: #D4AF37; font-size: 20px; font-weight: bold;');
+    console.log('%c✨ Empowering Fashion Designers', 'color: #4CAF50; font-size: 14px;');
+    console.log('%cFor support: training@jaylawklassic.com', 'color: #999; font-size: 12px;');
+  </script>
+</body>
+</html>

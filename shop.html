@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop premium fashion at Jay Law Klassic Wears - Traditional, Evening, Corporate & Accessories">
+  <meta name="keywords" content="fashion, clothing, bespoke, tailoring, Nigerian fashion">
+  <title>Shop - Jay Law Klassic Wears</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS RESET & ROOT VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #795548;
+      --gold: #D4AF37;
+      --gold-light: #F4E4C1;
+      --gold-dark: #B8960F;
+      --cream: #FFF8E7;
+      --white: #FFFFFF;
+      --black: #1a1a1a;
+      --shadow: rgba(62, 39, 35, 0.15);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #B8960F 100%);
+      --coffee-gradient: linear-gradient(135deg, #5D4037 0%, #3E2723 100%);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--coffee-dark);
+      overflow-x: hidden;
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.3;
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 248, 231, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 20px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px var(--shadow);
+      transition: padding 0.3s ease, background 0.3s ease;
+      border-bottom: 2px solid var(--gold-light);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      background: rgba(62, 39, 35, 0.98);
+    }
+
+    header.scrolled .logo,
+    header.scrolled nav a,
+    header.scrolled .menu-toggle {
+      color: var(--gold);
+    }
+
+    header.scrolled nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--coffee-dark);
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 2px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--coffee-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-dark);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      border-radius: 50%;
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75em;
+      font-weight: 700;
+      padding: 2px;
+    }
+
+    .nav-icon {
+      position: relative;
+      color: var(--coffee-dark);
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+    }
+
+    header.scrolled .nav-icon {
+      color: var(--gold);
+    }
+
+    .nav-icon:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      height: 60vh;
+      background: 
+        linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.7)),
+        url('https://media.istockphoto.com/id/1443311080/photo/portrait-of-african-american-tailor-man-looking-at-the-camera-smiling-in-atelier-studio.webp?a=1&b=1&s=612x612&w=0&k=20&c=x4_eyEaHwfd7huIsagTkrQg9XbSy5-_qS4TfnD5DHaI=');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient);
+      opacity: 0.3;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease;
+    }
+
+    .page-subtitle {
+      font-size: 1em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-weight: 300;
+    }
+
+    .page-hero h1 {
+      font-size: 4em;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .page-hero p {
+      font-size: 1.2em;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== SHOP FILTERS ===== */
+    .shop-filters {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 40px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: var(--white);
+      border: 2px solid var(--cream);
+      color: var(--coffee-dark);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--coffee-dark);
+      transform: translateY(-2px);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 2px solid var(--cream);
+      min-width: 300px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      width: 100%;
+      margin-left: 10px;
+      background: transparent;
+    }
+
+    .search-box i {
+      color: var(--coffee-medium);
+    }
+
+    /* ===== PRODUCTS GRID ===== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image-container {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gold);
+      color: var(--coffee-dark);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .wishlist-btn:hover {
+      background: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .wishlist-btn.active {
+      background: #E53935;
+      color: white;
+    }
+
+    .wishlist-btn i {
+      font-size: 1.1em;
+    }
+
+    .product-overlay {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      background: rgba(62, 39, 35, 0.95);
+      padding: 20px;
+      transition: bottom 0.4s ease;
+      z-index: 1;
+    }
+
+    .product-card:hover .product-overlay {
+      bottom: 0;
+    }
+
+    .quick-view-btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--gold);
+      border: none;
+      border-radius: 8px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quick-view-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-category {
+      color: var(--coffee-medium);
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3em;
+      font-weight: 600;
+      color: var(--coffee-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .stars {
+      color: var(--gold);
+    }
+
+    .rating-count {
+      color: var(--coffee-medium);
+      font-size: 0.9em;
+    }
+
+    .product-price {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: var(--gold-dark);
+            margin-bottom: 15px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--gold) 0%, #E5C158 100%);
+      border: none;
+      border-radius: 8px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .buy-now-btn {
+      padding: 12px 20px;
+      background: var(--coffee-dark);
+      border: none;
+      border-radius: 8px;
+      color: var(--gold);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .buy-now-btn:hover {
+      background: var(--coffee-medium);
+      transform: translateY(-2px);
+    }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-products {
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--white);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+    }
+
+    .empty-products i {
+      font-size: 5em;
+      color: var(--coffee-light);
+      margin-bottom: 20px;
+    }
+
+    .empty-products h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: var(--coffee-dark);
+    }
+
+    .empty-products p {
+      color: var(--coffee-medium);
+    }
+
+    /* ===== TOAST NOTIFICATION ===== */
+    .toast {
+      position: fixed;
+      bottom: -100px;
+      right: 30px;
+      background: var(--coffee-dark);
+      color: var(--gold);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 10000;
+      transition: bottom 0.4s ease;
+      max-width: 400px;
+    }
+
+    .toast.show {
+      bottom: 30px;
+    }
+
+    .toast i {
+      font-size: 1.5em;
+      color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 80px 20px 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto 50px;
+    }
+
+    footer p {
+      color: #f4e4c1;
+    }
+
+    .footer-section h3 {
+      color: #f4e4c1;
+      font-size: 1.5em;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #f4e4c1;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #f4e4c1;
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .footer-links a i {
+      margin-right: 8px;
+      font-size: 0.9em;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--gold);
+      color: var(--coffee-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2em;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      background: var(--gold-light);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      color: #f4e4c1;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #f4e4c1;
+    }
+
+    .contact-item i {
+      color: #f4e4c1;
+      font-size: 1.2em;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: #f4e4c1;
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+      font-size: 0.95em;
+    }
+
+    /* ===== BACK TO TOP BUTTON ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.7);
+    }
+
+    /* ===== WHATSAPP FLOAT BUTTON ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse-whatsapp 2s infinite;
+      text-decoration: none;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      animation: none;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .container {
+        padding: 0 30px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--coffee-dark);
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        gap: 25px;
+        align-items: flex-start;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        color: var(--gold-light);
+        font-size: 1.1em;
+        width: 100%;
+      }
+
+      nav a::after {
+        background: var(--gold);
+      }
+
+      header.scrolled nav a {
+        color: var(--gold-light);
+      }
+
+      .page-hero {
+        height: 40vh;
+        min-height: 300px;
+        margin-top: 70px;
+      }
+
+      .page-hero h1 {
+        font-size: 2.5em;
+      }
+
+      .page-hero p {
+        font-size: 1em;
+      }
+
+      .shop-filters {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .back-to-top,
+      .whatsapp-float {
+        right: 20px;
+      }
+
+      .whatsapp-float {
+        bottom: 90px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8em;
+      }
+
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3em;
+      }
+
+      .toast {
+        right: 20px;
+        left: 20px;
+        max-width: calc(100% - 40px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.5em;
+      }
+
+      .page-hero h1 {
+        font-size: 2em;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        max-width: 100%;
+      }
+
+      .filter-btn {
+        font-size: 0.9em;
+        padding: 8px 15px;
+      }
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --shadow: rgba(0, 0, 0, 0.5);
+      }
+
+      .product-card {
+        border: 2px solid var(--coffee-dark);
+      }
+    }
+
+    @media print {
+      header, footer, .back-to-top, .whatsapp-float, 
+      .product-overlay, .menu-toggle {
+        display: none !important;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          Jay-Law <span>Klassic Wears</span>
+        </a>
+
+        <nav id="nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" style="position: relative;">
+            Cart
+            <span class="cart-badge" id="cartBadge">0</span>
+          </a>
+          <a href="account.html" class="nav-icon" title="My Account">
+            <i class="fas fa-user"></i>
+          </a>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-subtitle">Premium Collection</p>
+      <h1>Our Shop</h1>
+      <p>Discover our exquisite collection of bespoke fashion and ready-to-wear pieces crafted with excellence.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="shop-filters">
+      <div class="filter-group">
+                <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn" data-category="Traditional">Traditional</button>
+        <button class="filter-btn" data-category="Evening Wear">Evening Wear</button>
+        <button class="filter-btn" data-category="Corporate">Corporate</button>
+        <button class="filter-btn" data-category="Accessories">Accessories</button>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products">
+      </div>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be loaded here dynamically -->
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop" role="button" aria-label="Back to top" tabindex="0">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/2348034567890" target="_blank" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Jay Law Klassic Wears</h3>
+          <p>Elevating style through exceptional craftsmanship. Shop our curated collections or request a custom piece tailored to your unique vision.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Training</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Returns & Exchanges</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping Information</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Fashion Street, Wuse 2, Abuja, Nigeria</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+234 803 456 7890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>shop@jaylawklassic.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <div id="toastMessage">Item added to cart!</div>
+  </div>
+
+  <script>
+    // ===== GLOBAL VARIABLES =====
+    let products = [];
+    let filteredProducts = [];
+    let currentCategory = 'all';
+    let cart = [];
+    let wishlist = [];
+
+    // ===== LOAD PRODUCTS FROM LOCALSTORAGE =====
+    function loadProducts() {
+      const savedProducts = localStorage.getItem('jaylawProducts');
+      if (savedProducts) {
+        products = JSON.parse(savedProducts);
+      } else {
+        // Default products if none exist
+        products = [
+          {
+            id: 1,
+            name: 'Elegant Evening Gown',
+            category: 'Evening Wear',
+            price: 45000,
+            stock: 25,
+            image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80',
+            description: 'Beautiful evening gown perfect for special occasions',
+            rating: 5,
+            reviews: 28,
+            sku: 'EEG-001'
+          },
+          {
+            id: 2,
+            name: 'Traditional Ankara Dress',
+            category: 'Traditional',
+            price: 32000,
+            stock: 15,
+            image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&q=80',
+            description: 'Vibrant traditional Ankara dress',
+            rating: 4.5,
+            reviews: 35,
+            sku: 'TAD-001'
+          },
+          {
+            id: 3,
+            name: 'Bespoke Blazer',
+            category: 'Corporate',
+            price: 55000,
+            stock: 18,
+            image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80',
+            description: 'Custom tailored blazer for professionals',
+            rating: 5,
+            reviews: 42,
+            sku: 'BB-002'
+          },
+          {
+            id: 4,
+            name: 'Designer Kaftan',
+            category: 'Traditional',
+            price: 38000,
+            stock: 32,
+            image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&q=80',
+            description: 'Elegant designer kaftan',
+            rating: 4.5,
+            reviews: 28,
+            sku: 'DK-002'
+          },
+          {
+            id: 5,
+            name: 'Leather Handbag',
+            category: 'Accessories',
+            price: 25000,
+            stock: 45,
+            image: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=400&q=80',
+            description: 'Premium leather handbag',
+            rating: 5,
+            reviews: 42,
+            sku: 'LH-005'
+          },
+          {
+            id: 6,
+            name: 'Silk Scarf Set',
+            category: 'Accessories',
+            price: 12000,
+            stock: 8,
+            image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&q=80',
+            description: 'Luxurious silk scarf set',
+            rating: 4,
+            reviews: 15,
+            sku: 'SSS-005'
+          }
+        ];
+        localStorage.setItem('jaylawProducts', JSON.stringify(products));
+      }
+      
+      filteredProducts = products;
+      loadCart();
+      loadWishlist();
+      renderProducts();
+    }
+
+    // ===== LOAD CART FROM LOCALSTORAGE =====
+    function loadCart() {
+      cart = JSON.parse(localStorage.getItem('jaylawCart')) || [];
+      updateCartBadge();
+    }
+
+    // ===== LOAD WISHLIST FROM LOCALSTORAGE =====
+    function loadWishlist() {
+      wishlist = JSON.parse(localStorage.getItem('jaylawWishlist')) || [];
+    }
+
+    // ===== UPDATE CART BADGE =====
+    function updateCartBadge() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartBadge').textContent = totalItems;
+    }
+
+    // ===== RENDER PRODUCTS =====
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+
+      // Handle empty state
+      if (!filteredProducts || filteredProducts.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-products" style="grid-column: 1/-1;">
+            <i class="fas fa-box-open"></i>
+            <h3>No Products Found</h3>
+            <p>Try adjusting your filters or search term</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Render product cards
+      grid.innerHTML = filteredProducts.map(product => {
+        const isInWishlist = wishlist.some(item => item.id === product.id);
+        const stars = generateStars(product.rating || 0);
+        const stockBadge = product.stock < 10 ? '<span class="product-badge">Low Stock</span>' : '';
+
+        return `
+          <div class="product-card" data-aos="fade-up">
+            <div class="product-image-container">
+              ${stockBadge}
+              <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" onclick="toggleWishlist(${product.id})" aria-label="Add to wishlist">
+                <i class="fas fa-heart"></i>
+              </button>
+              <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+              <div class="product-overlay">
+                <button class="quick-view-btn" onclick="quickView(${product.id})">
+                  <i class="fas fa-eye"></i> Quick View
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <h3 class="product-name">${product.name}</h3>
+              <div class="product-rating">
+                <div class="stars">${stars}</div>
+                <span class="rating-count">(${product.reviews || 0})</span>
+              </div>
+              <div class="product-price">₦${Number(product.price).toLocaleString()}</div>
+              <div class="product-actions">
+                <button class="add-to-cart-btn" onclick="addToCart(${product.id})" ${product.stock < 1 ? 'disabled' : ''}>
+                  <i class="fas fa-shopping-cart"></i>
+                  ${product.stock < 1 ? 'Out of Stock' : 'Add to Cart'}
+                </button>
+                <button class="buy-now-btn" onclick="buyNow(${product.id})" ${product.stock < 1 ? 'disabled' : ''}>
+                  <i class="fas fa-bolt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ===== GENERATE STAR RATING HTML =====
+    function generateStars(rating) {
+      let stars = '';
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 !== 0;
+      
+      for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+      }
+      
+      if (hasHalfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+      }
+      
+      const emptyStars = 5 - Math.ceil(rating);
+      for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+      }
+      
+      return stars;
+    }
+
+    // ===== ADD TO CART =====
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      if (product.stock < 1) {
+        showToast('❌ Sorry, this product is out of stock');
+        return;
+      }
+
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        if (existingItem.quantity >= product.stock) {
+          showToast('⚠️ Maximum stock reached for this item');
+          return;
+        }
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1,
+          category: product.category
+        });
+      }
+
+      localStorage.setItem('jaylawCart', JSON.stringify(cart));
+      updateCartBadge();
+      showToast(`✅ ${product.name} added to cart!`);
+    }
+
+    // ===== BUY NOW =====
+    function buyNow(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      if (product.stock < 1) {
+        showToast('❌ Sorry, this product is out of stock');
+        return;
+      }
+
+      addToCart(productId);
+      
+      setTimeout(() => {
+        window.location.href = 'cart.html';
+      }, 800);
+    }
+
+    // ===== TOGGLE WISHLIST =====
+    function toggleWishlist(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingIndex = wishlist.findIndex(item => item.id === productId);
+      
+      if (existingIndex !== -1) {
+        wishlist.splice(existingIndex, 1);
+        showToast(`💔 ${product.name} removed from wishlist`);
+      } else {
+        wishlist.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+	          category: product.category
+        });
+        showToast(`❤️ ${product.name} added to wishlist!`);
+      }
+
+      localStorage.setItem('jaylawWishlist', JSON.stringify(wishlist));
+      renderProducts();
+    }
+
+    // ===== QUICK VIEW =====
+    function quickView(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const stars = generateStars(product.rating);
+      const stockStatus = product.stock > 10 
+        ? 'In Stock' 
+        : product.stock > 0 
+        ? `Only ${product.stock} left!` 
+        : 'Out of Stock';
+      
+      const message = `
+━━━━━━━━━━━━━━━━━━━━━━━━
+${product.name}
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+Category: ${product.category}
+Price: ₦${product.price.toLocaleString()}
+SKU: ${product.sku}
+Stock: ${stockStatus}
+Rating: ${product.rating}/5 ⭐ (${product.reviews} reviews)
+
+Description:
+${product.description}
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+Click "Add to Cart" to purchase!
+      `;
+      
+      alert(message);
+    }
+
+    // ===== SHOW TOAST NOTIFICATION =====
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // ===== FILTER BY CATEGORY =====
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        currentCategory = btn.getAttribute('data-category');
+        filterProducts();
+      });
+    });
+
+    // ===== SEARCH FUNCTIONALITY =====
+    const searchInput = document.getElementById('searchInput');
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        filterProducts();
+      }, 300);
+    });
+
+    // ===== FILTER PRODUCTS =====
+    function filterProducts() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+      filteredProducts = products.filter(product => {
+        const matchesCategory = currentCategory === 'all' || product.category === currentCategory;
+        const matchesSearch = !searchTerm || 
+          product.name.toLowerCase().includes(searchTerm) ||
+          product.category.toLowerCase().includes(searchTerm) ||
+          (product.description && product.description.toLowerCase().includes(searchTerm)) ||
+          (product.sku && product.sku.toLowerCase().includes(searchTerm));
+
+        return matchesCategory && matchesSearch;
+      });
+
+      renderProducts();
+    }
+
+    // ===== LISTEN FOR STORAGE CHANGES (ADMIN UPDATES) =====
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'jaylawProducts') {
+        loadProducts();
+      } else if (e.key === 'jaylawCart') {
+        loadCart();
+      } else if (e.key === 'jaylawWishlist') {
+        loadWishlist();
+        renderProducts();
+      }
+    });
+
+    // ===== HEADER SCROLL EFFECT =====
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // ===== MOBILE MENU TOGGLE =====
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ===== CLOSE MENU WHEN CLICKING OUTSIDE =====
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && 
+          !menuToggle.contains(e.target) && 
+          nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ===== CLOSE MENU WHEN CLICKING NAV LINK =====
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    // ===== BACK TO TOP BUTTON =====
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ 
+        top: 0, 
+        behavior: 'smooth' 
+      });
+    });
+
+    // ===== KEYBOARD ACCESSIBILITY FOR BACK TO TOP =====
+    backToTop.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.scrollTo({ 
+          top: 0, 
+          behavior: 'smooth' 
+        });
+      }
+    });
+
+    // ===== PREVENT DISABLED BUTTONS FROM BEING CLICKED =====
+    document.addEventListener('click', (e) => {
+      if (e.target.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+
+    // ===== PERFORMANCE OPTIMIZATION: DEBOUNCE SCROLL =====
+    let scrollTimeout;
+    let lastScrollPosition = window.pageYOffset;
+
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        lastScrollPosition = window.pageYOffset;
+      }, 100);
+    }, { passive: true });
+
+    // ===== LAZY LOAD IMAGES =====
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+            }
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      // Observe images after products render
+      const observeImages = () => {
+        document.querySelectorAll('img[data-src]').forEach(img => {
+          imageObserver.observe(img);
+        });
+      };
+
+      // Call after initial render
+      setTimeout(observeImages, 100);
+    }
+
+    // ===== ERROR HANDLING FOR IMAGES =====
+    document.addEventListener('error', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.target.src = 'https://via.placeholder.com/400x400/795548/FFFFFF?text=Image+Not+Found';
+        e.target.alt = 'Product image not available';
+      }
+    }, true);
+
+    // ===== INITIALIZE ON DOM LOAD =====
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadProducts);
+    } else {
+      loadProducts();
+    }
+
+    // ===== PERIODIC SYNC WITH LOCALSTORAGE =====
+    setInterval(() => {
+      const savedProducts = localStorage.getItem('jaylawProducts');
+      if (savedProducts) {
+        const parsedProducts = JSON.parse(savedProducts);
+        if (JSON.stringify(parsedProducts) !== JSON.stringify(products)) {
+          products = parsedProducts;
+          filterProducts();
+        }
+      }
+    }, 5000); // Check every 5 seconds
+
+    // ===== CONSOLE LOG FOR DEBUGGING =====
+    console.log('%cJay Law Klassic Wears - Shop Page Loaded', 'color: #D4AF37; font-size: 16px; font-weight: bold;');
+    console.log('%cVersion: 2.0', 'color: #5D4037; font-size: 12px;');
+  </script>
+</body>
+</html>

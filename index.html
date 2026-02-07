@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jay-Law Klassic Wears - Luxury Tailoring & Fashion</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="lightbox.css" rel="stylesheet">
+<script src="lightbox.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #795548;
+      --gold: #D4AF37;
+      --gold-light: #F4E4C1;
+      --gold-dark: #B8960F;
+      --cream: #FFF8E7;
+      --white: #FFFFFF;
+      --black: #1a1a1a;
+      --shadow: rgba(62, 39, 35, 0.15);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #B8960F 100%);
+      --coffee-gradient: linear-gradient(135deg, #5D4037 0%, #3E2723 100%);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--coffee-dark);
+      overflow-x: hidden;
+      background: var(--cream);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--coffee-gradient);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s, visibility 0.5s;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+  display: flex;
+  flex-direction: column;   /* stack logo above text */
+  align-items: center;
+  font-size: 2em;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 30px;
+  animation: fadeInScale 1s ease;
+}
+
+.loader-logo img {
+  width: 120px;             /* adjust logo size */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .loader::after {
+      content: '';
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(212, 175, 55, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+   /* Header & Navigation */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 248, 231, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 20px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px var(--shadow);
+  transition: padding 0.3s ease, background 0.3s ease;
+  border-bottom: 2px solid var(--gold-light);
+}
+
+header.scrolled {
+  padding: 12px 0;
+  background: rgba(62, 39, 35, 0.98);
+}
+
+header.scrolled .logo,
+header.scrolled nav a {
+  color: var(--gold);
+}
+
+header.scrolled nav a:hover {
+  color: var(--gold-light);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+nav a {
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--gold-dark);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--coffee-dark);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh; /* use min-height instead of fixed height */
+  background: linear-gradient(rgba(62, 39, 35, 0.6), rgba(62, 39, 35, 0.6)),
+              url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80') 
+              center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px; /* sensible spacing top & bottom */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0; /* shorthand for top/right/bottom/left:0 */
+  background: var(--gradient);
+  opacity: 0.2;
+  animation: pulse 4s ease-in-out infinite;
+  z-index: 0; /* keep overlay behind content */
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1; /* ensures text is above overlay */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-size: 1.2em;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 3px 3px 20px rgba(0,0,0,0.5);
+}
+
+.hero-description {
+  font-size: 1.2em;
+  margin: 0 auto 40px;
+  max-width: 700px;
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 18px 45px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: var(--coffee-dark);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--coffee-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+}
+
+
+    /* Scroll Down Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator i {
+      font-size: 2em;
+      color: var(--gold);
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    /* Featured Collection Section */
+    .featured-collection {
+      padding: 120px 20px;
+      background: var(--white);
+      position: relative;
+    }
+
+    .featured-collection::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 0.9em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 3.5em;
+      color: var(--coffee-dark);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    .section-description {
+      max-width: 700px;
+      margin: 30px auto 0;
+      color: var(--coffee-medium);
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    /* Image Grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px var(--shadow);
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      aspect-ratio: 3/4;
+    }
+
+    .image-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(62, 39, 35, 0.95));
+      padding: 40px 25px 25px;
+      transform: translateY(100%);
+            transition: transform 0.5s ease;
+    }
+
+    .image-card:hover .image-overlay {
+      transform: translateY(0);
+    }
+
+    .image-overlay h3 {
+      color: var(--gold);
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .image-overlay p {
+      color: var(--white);
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.85em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 120px 20px;
+      background: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 50px 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 50px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(212, 175, 55, 0.3);
+    }
+
+    .service-icon {
+      font-size: 4em;
+      margin-bottom: 25px;
+      color: var(--gold);
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .service-title {
+      font-size: 1.8em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--coffee-dark);
+    }
+
+    .service-description {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      font-size: 1.05em;
+      margin-bottom: 25px;
+    }
+
+    .service-link {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s ease;
+    }
+
+    .service-link:hover {
+      gap: 15px;
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: 120px 20px;
+      background: var(--coffee-gradient);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1558769132-cb1aea9c615e?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+
+    .process-number {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      font-weight: 700;
+      margin: 0 auto 25px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      position: relative;
+    }
+
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      right: -25px;
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+
+    .process-step:last-child::after {
+      display: none;
+    }
+
+    .process-title {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .process-description {
+      color: var(--gold-light);
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 120px 20px;
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px var(--shadow);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 6em;
+      color: var(--gold);
+      opacity: 0.2;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 25px;
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+    }
+
+    .testimonial-info h4 {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-info p {
+      color: var(--gold-dark);
+      font-size: 0.9em;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 120px 20px;
+      background: var(--cream);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.2);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(62, 39, 35, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay i {
+      color: var(--gold);
+      font-size: 3em;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 80px 20px;
+      background: var(--coffee-gradient);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-item {
+      position: relative;
+    }
+
+    .stat-number {
+      font-size: 4em;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 120px 20px;
+      background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)),
+                  url('https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=1600&q=80') center/cover no-repeat;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: 3em;
+      margin-bottom: 25px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .cta-description {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      color: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 80px 20px 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto 50px;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      font-size: 1.5em;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--gold);
+      color: var(--coffee-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2em;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      background: var(--gold-light);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-item i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+    }
+    .footer-logo {
+  height: 40px;       /* adjust size */
+  width: auto;
+  margin-right: 10px; /* space between logo and text */
+  vertical-align: middle;
+}
+
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.7);
+    }
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 4em;
+      }
+
+      .section-title {
+        font-size: 3em;
+      }
+
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--coffee-dark);
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        gap: 25px;
+	transition: right 0.4s ease;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        color: var(--gold-light);
+        font-size: 1.1em;
+      }
+
+      nav a::after {
+        background: var(--gold);
+      }
+
+      header.scrolled nav a {
+        color: var(--gold-light);
+      }
+
+      .hero h1 {
+        font-size: 2.5em;
+      }
+
+      .hero-description {
+        font-size: 1.1em;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .section-title {
+        font-size: 2.2em;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step::after {
+        display: none;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .cta-title {
+        font-size: 2em;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+	.back-to-top,
+      .whatsapp-float {
+        right: 20px;
+      }
+      
+
+      .whatsapp-float {
+        bottom: 90px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9em;
+        letter-spacing: 2px;
+      }
+
+      .hero-description {
+        font-size: 1em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+
+      .stat-number {
+        font-size: 3em;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      animation: fadeIn 1s ease;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 1s ease;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 1s ease;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen
+  <div class="loader">
+  <div class="loader-logo">
+    <img src="Jay-Law_logo.jpg" alt="Jay-Law Klassic Wears Logo">
+    <span>Jay-Law Klassic Wears</span>
+  </div>
+</div>-->
+
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+     <a href="index.html" class="logo">
+  <!--<img src="Jay-Law_logo.jpg" alt="Jay-Law Klassic Wears Logo">-->
+  Jay-Law <span>Klassic Wears</span>
+</a>
+
+        <nav id="nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html">Contact</a>
+	  <a href="cart.html">Cart</a>
+	    <div class="nav-icons">
+            <a href="account.html" class="nav-icon" title="My Account">
+              <i class="fas fa-user"></i>
+            </a>
+            
+          </div>
+        </nav>
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i>
+</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">Since 2015</p>
+      <h1>Elegance in Every Stitch</h1>
+      <p class="hero-description">Bespoke tailoring and luxury fashion for the distinguished. Experience craftsmanship that transforms fabric into art.</p>
+      <div class="hero-buttons">
+        <a href="shop.html" class="btn btn-primary">
+          <i class="fas fa-shopping-bag"></i> Explore Collection
+        </a>
+        <a href="contact.html" class="btn btn-secondary">
+          <i class="fas fa-scissors"></i> Book Consultation
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Featured Collection Section -->
+  <section class="featured-collection">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Our Collections</p>
+        <h2 class="section-title">Featured Designs</h2>
+        <p class="section-description">Discover our signature pieces, meticulously crafted with premium fabrics and unparalleled attention to detail.</p>
+      </div>
+      <div class="image-grid">
+        <div class="image-card">
+          <span class="image-badge">New Arrival</span>
+          <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80" alt="Elegant Suit">
+          <div class="image-overlay">
+            <h3>Executive Suits</h3>
+            <p>Tailored perfection for the modern professional</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <span class="image-badge">Bestseller</span>
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="Traditional Wear">
+          <div class="image-overlay">
+            <h3>Traditional Agbada</h3>
+            <p>Cultural elegance meets contemporary style</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80" alt="Evening Gown">
+          <div class="image-overlay">
+            <h3>Evening Gowns</h3>
+            <p>Sophistication for your special moments</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80" alt="Casual Wear">
+          <div class="image-overlay">
+            <h3>Smart Casual</h3>
+            <p>Effortless style for everyday luxury</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <span class="image-badge">Exclusive</span>
+          <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&q=80" alt="Wedding Collection">
+          <div class="image-overlay">
+            <h3>Bridal Collection</h3>
+            <p>Dream wedding attire made reality</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Kids Fashion">
+          <div class="image-overlay">
+            <h3>Children's Line</h3>
+            <p>Adorable designs for your little ones</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-description">From concept to creation, we provide comprehensive tailoring services that exceed expectations.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">👔</div>
+          <h3 class="service-title">Bespoke Tailoring</h3>
+          <p class="service-description">Experience the luxury of custom-made garments designed exclusively for you. Every measurement, every detail, perfectly crafted to your specifications.</p>
+          <a href="services.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧵</div>
+          <h3 class="service-title">Expert Alterations</h3>
+          <p class="service-description">Professional alterations that ensure your garments fit flawlessly. From minor adjustments to complete redesigns.</p>
+          <a href="services.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👗</div>
+          <h3 class="service-title">Ready-to-Wear</h3>
+          <p class="service-description">Curated collections of premium ready-made garments. Style and quality without the wait.</p>
+          <a href="shop.html" class="service-link">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" style="color: var(--gold);">How It Works</p>
+        <h2 class="section-title" style="color: var(--gold-light);">Our Tailoring Process</h2>
+        <p class="section-description" style="color: var(--gold-light);">From your first consultation to the final fitting, we ensure a seamless experience.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <h3 class="process-title">Consultation</h3>
+          <p class="process-description">We discuss your vision, style preferences, and occasion requirements</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <h3 class="process-title">Measurement</h3>
+          <p class="process-description">Precise measurements ensure a perfect fit every time</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <h3 class="process-title">Fabric Selection</h3>
+          <p class="process-description">Choose from our premium collection of luxury fabrics</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <h3 class="process-title">Crafting</h3>
+          <p class="process-description">Our master tailors bring your design to life with precision</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Testimonials</p>
+        <h2 class="section-title">What Clients Say</h2>
+        <p class="section-description">Don't just take our word for it. Here's what our satisfied clients have to say.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Jay Law made my wedding dress absolutely perfect! The attention to detail was incredible, and I felt like royalty on my special day. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=47" alt="Ada Okafor" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Ada Okafor</h4>
+              <p>Bride, 2025</p>
+            </div>
+	            </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Best tailoring service in Abuja! Professional, reliable, and the quality is outstanding. My suits always get compliments. Jay Law is now my go-to tailor."</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Tunde Adeyemi" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Tunde Adeyemi</h4>
+              <p>Business Executive</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"I've been a loyal customer for 3 years. Jay Law never disappoints. The craftsmanship is top-notch and they always deliver on time. Worth every naira!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=45" alt="Chioma Nwankwo" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Chioma Nwankwo</h4>
+              <p>Fashion Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">Our Work Gallery</h2>
+        <p class="section-description">A glimpse into our craftsmanship and the elegant pieces we've created.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+	<a href="https://images.unsplash.com/photo-1594938328870-f5d3e33a4ef1?w=1200&q=80" data-lightbox="gallery">
+          <img src="https://images.unsplash.com/photo-1594938328870-f5d3e33a4ef1?w=800&q=80" alt="Gallery Item 1">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+	</a>
+        </div>
+
+        <div class="gallery-item">
+	 <a href="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" data-lightbox="gallery">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Gallery Item 2">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+	</a>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80" alt="Gallery Item 3">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&q=80" alt="Gallery Item 4">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="Gallery Item 5">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80" alt="Gallery Item 6">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80" alt="Gallery Item 7">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Gallery Item 8">
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="2500">0</div>
+          <p class="stat-label">Happy Clients</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="5000">0</div>
+          <p class="stat-label">Garments Crafted</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="10">0</div>
+          <p class="stat-label">Years Experience</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="98">0</div>
+          <p class="stat-label">Satisfaction Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Look Your Best?</h2>
+      <p class="cta-description">Book a consultation today and experience the luxury of bespoke tailoring. Let us create something extraordinary for you.</p>
+      <div class="hero-buttons">
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fas fa-calendar-check"></i> Book Consultation
+        </a>
+        <a href="shop.html" class="btn btn-secondary">
+          <i class="fas fa-shopping-bag"></i> Browse Collections
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3> <img src="Jay-Law_logo.jpg" alt="Jay Law Klassic Wears Logo" class="footer-logo"> Jay Law Klassic Wears </h3>
+          <p>Elevating style through exceptional craftsmanship. We specialize in bespoke tailoring, alterations, and ready-to-wear fashion for men, women, and children.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Training</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html#bespoke"><i class="fas fa-chevron-right"></i> Bespoke Tailoring</a></li>
+            <li><a href="services.html#alterations"><i class="fas fa-chevron-right"></i> Alterations</a></li>
+            <li><a href="services.html#ready-made"><i class="fas fa-chevron-right"></i> Ready-to-Wear</a></li>
+            <li><a href="services.html#bridal"><i class="fas fa-chevron-right"></i> Bridal Collection</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Fashion Training</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Fashion Street, Wuse 2, Abuja, Nigeria</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+234 803 456 7890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@jaylawklassic.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon - Sat: 9AM - 6PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+    </div>
+  </footer>
+
+ <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop" role="button" aria-label="Back to top" tabindex="0">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/2348034567890" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1500);
+    });
+
+    // Sticky Header on Scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animate Stats Counter
+    const animateCounter = (element) => {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          element.textContent = Math.floor(current) + (target > 50 ? '+' : '%');
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target + (target > 50 ? '+' : '%');
+        }
+      };
+
+      updateCounter();
+    };
+
+    // Intersection Observer for Stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumbers = entry.target.querySelectorAll('.stat-number');
+          statNumbers.forEach(num => {
+            if (num.textContent === '0' || num.textContent === '0%' || num.textContent === '0+') {
+              animateCounter(num);
+            }
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.service-card, .testimonial-card, .image-card, .process-step').forEach(el => {
+      fadeInObserver.observe(el);
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Gallery lightbox effect (simple version)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const lightbox = document.createElement('div');
+        lightbox.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.95);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10000;
+          cursor: pointer;
+        `;
+        
+        const lightboxImg = document.createElement('img');
+        lightboxImg.src = img.src;
+        lightboxImg.style.cssText = `
+          max-width: 90%;
+          max-height: 90%;
+          object-fit: contain;
+          border-radius: 10px;
+          box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+        `;
+        
+        lightbox.appendChild(lightboxImg);
+        document.body.appendChild(lightbox);
+        
+        lightbox.addEventListener('click', () => {
+          lightbox.remove();
+        });
+      });
+    });
+
+    // Add hover sound effect simulation (visual feedback)
+    const buttons = document.querySelectorAll('.btn, .service-link, .quick-link');
+    buttons.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.style.transition = 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+      });
+    });
+
+    // Image lazy loading
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            img.classList.add('loaded');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Testimonial card auto-rotate (optional)
+    let testimonialIndex = 0;
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    function rotateTestimonials() {
+      testimonialCards.forEach((card, index) => {
+        card.style.transform = index === testimonialIndex ? 'scale(1.05)' : 'scale(1)';
+        card.style.boxShadow = index === testimonialIndex 
+          ? '0 20px 60px rgba(212, 175, 55, 0.4)' 
+          : '0 10px 40px var(--shadow)';
+      });
+      
+      testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
+    }
+
+    // Uncomment to enable auto-rotation every 5 seconds
+    // setInterval(rotateTestimonials, 5000);
+
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.6);
+          width: 100px;
+          height: 100px;
+          margin-top: -50px;
+          margin-left: -50px;
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+        
+        const rect = this.getBoundingClientRect();
+        ripple.style.left = e.clientX - rect.left + 'px';
+        ripple.style.top = e.clientY - rect.top + 'px';
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        from {
+          transform: scale(0);
+          opacity: 1;
+        }
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Prevent FOUC (Flash of Unstyled Content)
+    document.documentElement.style.visibility = 'visible';
+
+    // Enhanced scroll reveal animation
+    const revealElements = document.querySelectorAll('.section-header, .image-card, .service-card, .process-step');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('fade-in');
+          }, index * 100);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Performance optimization: Debounce scroll events
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Optimized scroll handler
+    const optimizedScroll = debounce(() => {
+      // Any heavy scroll operations here
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      // Update scroll indicator if exists
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (scrollIndicator && scrollPercentage > 5) {
+        scrollIndicator.style.opacity = '0';
+      } else if (scrollIndicator) {
+        scrollIndicator.style.opacity = '1';
+      }
+    }, 10);
+
+    window.addEventListener('scroll', optimizedScroll);
+
+    // Console message for developers
+    console.log('%c🎨 Jay Law Klassic Wears', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
+    console.log('%cElegance in Every Stitch', 'color: #5D4037; font-size: 14px;');
+    console.log('%cWebsite designed with modern web technologies', 'color: #999; font-size: 12px;');
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Disable animations for users who prefer reduced motion
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animation = 'none';
+        el.style.transition = 'none';
+      });
+    }
+
+    // Service Worker registration for PWA (optional)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        // Uncomment to enable PWA features
+        // navigator.serviceWorker.register('/sw.js')
+        //   .then(reg => console.log('Service Worker registered'))
+        //   .catch(err => console.log('Service Worker registration failed'));
+      });
+    }
+
+    // Add active state to current page in navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.style.color = 'var(--gold)';
+        link.style.fontWeight = '700';
+      }
+    });
+
+    // Easter egg: Konami code
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    
+    window.addEventListener('keydown', (e) => {
+      konamiCode.push(e.key);
+      konamiCode = konamiCode.slice(-10);
+      
+      if (konamiCode.join('') === konamiSequence.join('')) {
+        document.body.style.animation = 'rainbow 2s linear infinite';
+        setTimeout(() => {
+          document.body.style.animation = '';
+        }, 5000);
+      }
+    });
+
+    // Add rainbow animation
+    const rainbowStyle = document.createElement('style');
+    rainbowStyle.textContent = `
+      @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(rainbowStyle);
+
+  </script>
+</body>
+</html>

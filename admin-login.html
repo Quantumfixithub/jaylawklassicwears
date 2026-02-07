@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Jay Law Klassic</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #3E2723 0%, #5D4037 50%, #8D6E63 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 248, 231, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+      animation: bgMove 20s ease infinite;
+    }
+
+    @keyframes bgMove {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+    }
+
+    /* Floating Particles */
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: #D4AF37;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      animation: float 15s infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        transform: translateY(-100vh) translateX(100px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .admin-login-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 50px 40px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 10;
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .admin-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .admin-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #D4AF37, #E5C158);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      }
+      50% {
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+      }
+    }
+
+    .admin-icon i {
+      font-size: 2.5em;
+      color: #3E2723;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      color: #D4AF37;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #FFF8E7;
+      font-size: 1em;
+    }
+
+    .alert {
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      display: none;
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+
+    .alert-error {
+      background: rgba(229, 57, 53, 0.2);
+      border: 1px solid rgba(229, 57, 53, 0.4);
+      color: #EF5350;
+    }
+
+    .alert-success {
+      background: rgba(76, 175, 80, 0.2);
+      border: 1px solid rgba(76, 175, 80, 0.4);
+      color: #66BB6A;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      color: #FFF8E7;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.1em;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #D4AF37;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-admin {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #D4AF37, #E5C158);
+      color: #3E2723;
+      border: none;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-admin:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-admin:active {
+      transform: translateY(0);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .back-link a {
+      color: #D4AF37;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #FFF8E7;
+      text-decoration: underline;
+    }
+
+    .info-box {
+      background: rgba(33, 150, 243, 0.2);
+      border: 1px solid rgba(33, 150, 243, 0.4);
+      color: #42A5F5;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 25px;
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .admin-login-container {
+        padding: 40px 30px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 70%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 3s;"></div>
+
+  <div class="admin-login-container">
+    <div class="admin-header">
+      <div class="admin-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h1>Admin Access</h1>
+      <p class="subtitle">Jay Law Klassic Wears</p>
+    </div>
+
+    <div class="alert alert-error" id="errorAlert"></div>
+    <div class="alert alert-success" id="successAlert"></div>
+
+    <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+      <div class="form-group">
+        <label class="form-label">Admin Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope input-icon"></i>
+          <input 
+            type="email" 
+            class="form-input" 
+            id="adminEmail" 
+            placeholder="Enter admin email" 
+            required
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Admin Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock input-icon"></i>
+          <input 
+            type="password" 
+            class="form-input" 
+            id="adminPassword" 
+            placeholder="Enter admin password" 
+            required
+            autocomplete="current-password"
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="btn-admin">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Login to Dashboard</span>
+      </button>
+    </form>
+
+    <div class="back-link">
+      <a href="index.html">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+
+    <div class="info-box">
+      <i class="fas fa-info-circle"></i>
+      <strong>Demo Credentials:</strong><br>
+      Email: admin@jaylawklassic.com<br>
+      Password: Admin@2024
+    </div>
+  </div>
+<div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+  <script>
+    // Admin credentials (in production, verify against secure backend)
+    const ADMIN_CREDENTIALS = {
+      email: 'admin@jaylawklassic.com',
+      password: 'Admin@2024'
+    };
+
+    // Create more particles
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      document.body.appendChild(particle);
+    }
+
+    function handleAdminLogin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('adminEmail').value.trim();
+      const password = document.getElementById('adminPassword').value;
+
+      // Hide previous alerts
+      document.getElementById('errorAlert').style.display = 'none';
+      document.getElementById('successAlert').style.display = 'none';
+
+      // Validate credentials
+      if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
+        // Create admin user session
+        const adminUser = {
+          id: 0,
+          name: 'Administrator',
+          email: email,
+          isAdmin: true,
+          loginTime: new Date().toISOString()
+        };
+
+        // Save to localStorage
+        localStorage.setItem('jaylawCurrentUser', JSON.stringify(adminUser));
+        localStorage.setItem('jaylawLoggedIn', 'true');
+
+        // Show success message
+        const successAlert = document.getElementById('successAlert');
+                successAlert.textContent = '✅ Login successful! Redirecting to dashboard...';
+        successAlert.style.display = 'block';
+
+        // Redirect to admin dashboard
+        setTimeout(() => {
+          window.location.href = 'admin.html';
+        }, 1500);
+
+      } else {
+        // Show error message
+        const errorAlert = document.getElementById('errorAlert');
+        errorAlert.textContent = '❌ Invalid credentials. Please try again.';
+        errorAlert.style.display = 'block';
+
+        // Shake the form
+        document.getElementById('adminLoginForm').style.animation = 'none';
+        setTimeout(() => {
+          document.getElementById('adminLoginForm').style.animation = 'shake 0.5s';
+        }, 10);
+      }
+    }
+
+    // Check if already logged in as admin
+    window.addEventListener('load', () => {
+      const currentUser = JSON.parse(localStorage.getItem('jaylawCurrentUser'));
+      if (currentUser && currentUser.isAdmin) {
+        // Already logged in, redirect to dashboard
+        window.location.href = 'admin.html';
+      }
+    });
+
+    // Handle Enter key in password field
+    document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('adminLoginForm').dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+</body>
+</html>

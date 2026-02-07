@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Jay Law Klassic Wears</title>
+  <meta name="description" content="Manage your Jay Law Klassic store - orders, products, customers, and analytics.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #8D6E63;
+      --cream: #FFF8E7;
+      --gold: #D4AF37;
+      --gold-dark: #B8941E;
+      --gold-light: #E5C158;
+      --white: #FFFFFF;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #E5C158 100%);
+      --coffee-gradient: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+      --success: #4CAF50;
+      --warning: #FF9800;
+      --danger: #E53935;
+      --info: #2196F3;
+      --sidebar-width: 280px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F5F5F5;
+      color: var(--coffee-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading Screen */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--coffee-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    /* Admin Container */
+    .admin-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: var(--sidebar-width);
+      background: var(--coffee-gradient);
+      color: var(--gold-light);
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .admin-sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar-header {
+      padding: 30px 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .sidebar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-logo span {
+      color: var(--gold-light);
+    }
+
+    .admin-role {
+      text-align: center;
+      color: var(--gold-light);
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .admin-nav {
+      padding: 20px 0;
+    }
+
+    .nav-section {
+      margin-bottom: 25px;
+    }
+
+    .nav-section-title {
+      padding: 10px 20px;
+      font-size: 0.75em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(229, 193, 88, 0.6);
+      font-weight: 600;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+      padding-left: 30px;
+    }
+
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--gold);
+    }
+
+    .nav-item i {
+      font-size: 1.2em;
+      width: 25px;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--danger);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 0.75em;
+      font-weight: 700;
+    }
+
+    .sidebar-footer {
+      padding: 20px;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      margin-top: auto;
+    }
+
+    .view-site-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .view-site-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .logout-btn:hover {
+      background: #C62828;
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    .admin-main {
+      margin-left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      min-height: 100vh;
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
+
+    .admin-main.expanded {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    /* Top Bar */
+    .admin-topbar {
+      background: var(--white);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .menu-toggle:hover {
+      background: var(--cream);
+      transform: rotate(90deg);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--cream);
+      padding: 10px 20px;
+      border-radius: 25px;
+      width: 400px;
+    }
+
+    .search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: var(--coffee-dark);
+    }
+
+    .search-bar i {
+      color: var(--coffee-medium);
+      margin-right: 10px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar-icon {
+      position: relative;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .topbar-icon:hover {
+      color: var(--gold);
+      background: var(--cream);
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--danger);
+      color: white;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7em;
+      font-weight: 700;
+    }
+
+    .admin-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 8px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .admin-profile:hover {
+      background: var(--cream);
+    }
+
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-name {
+      font-weight: 600;
+      color: var(--coffee-dark);
+      font-size: 0.95em;
+    }
+
+    .profile-role {
+      font-size: 0.75em;
+      color: var(--coffee-medium);
+    }
+
+    /* Content Area */
+    .admin-content {
+      padding: 30px;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      color: var(--coffee-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .page-subtitle {
+      color: var(--coffee-medium);
+      font-size: 1.1em;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: var(--gradient);
+      opacity: 0.1;
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+    }
+
+    .stat-icon.blue { background: rgba(33, 150, 243, 0.1); color: var(--info); }
+    .stat-icon.green { background: rgba(76, 175, 80, 0.1); color: var(--success); }
+    .stat-icon.orange { background: rgba(255, 152, 0, 0.1); color: var(--warning); }
+    .stat-icon.red { background: rgba(229, 57, 53, 0.1); color: var(--danger); }
+
+    .stat-trend {
+            display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 15px;
+    }
+
+    .stat-trend.up {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success);
+    }
+
+    .stat-trend.down {
+      background: rgba(229, 57, 53, 0.1);
+      color: var(--danger);
+    }
+
+    .stat-label {
+      color: var(--coffee-medium);
+      font-size: 0.9em;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .stat-value {
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--coffee-dark);
+      line-height: 1;
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .chart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color: var(--coffee-dark);
+      font-weight: 700;
+    }
+
+    .chart-filters {
+      display: flex;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 8px 15px;
+      border: 2px solid var(--cream);
+      background: transparent;
+      color: var(--coffee-medium);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gradient);
+      border-color: var(--gold);
+      color: var(--coffee-dark);
+    }
+
+    .chart-canvas {
+      height: 300px;
+      position: relative;
+    }
+
+    /* Data Table */
+    .data-table-container {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .table-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color: var(--coffee-dark);
+      font-weight: 700;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: var(--coffee-dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--cream);
+      color: var(--coffee-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--coffee-light);
+      color: white;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #C62828;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #388E3C;
+    }
+
+    .btn-icon {
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1em;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .data-table thead {
+      background: var(--cream);
+    }
+
+    .data-table th {
+      padding: 15px;
+      text-align: left;
+      color: var(--coffee-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85em;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table td {
+      padding: 15px;
+      border-bottom: 1px solid var(--cream);
+      color: var(--coffee-medium);
+    }
+
+    .data-table tbody tr {
+      transition: background 0.3s ease;
+    }
+
+    .data-table tbody tr:hover {
+      background: var(--cream);
+    }
+
+    .order-id {
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    .customer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .customer-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background: rgba(255, 152, 0, 0.1);
+      color: var(--warning);
+    }
+
+    .status-processing {
+      background: rgba(33, 150, 243, 0.1);
+      color: var(--info);
+    }
+
+    .status-completed {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success);
+    }
+
+    .status-cancelled {
+      background: rgba(229, 57, 53, 0.1);
+      color: var(--danger);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .quick-action-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px var(--shadow);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--coffee-dark);
+    }
+
+    .quick-action-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .quick-action-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      color: var(--coffee-dark);
+    }
+
+    .quick-action-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .quick-action-desc {
+      font-size: 0.85em;
+      color: var(--coffee-medium);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      color: var(--coffee-dark);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid var(--cream);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+      background: var(--white);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      padding: 30px;
+      border-bottom: 2px solid var(--cream);
+      position: relative;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--coffee-dark);
+      font-size: 1.8em;
+      font-weight: 700;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--cream);
+      border: none;
+      border-radius: 50%;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      background: var(--danger);
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: -100px;
+      right: 30px;
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 10002;
+      transition: bottom 0.4s ease;
+      max-width: 400px;
+    }
+
+    .toast.show {
+      bottom: 30px;
+    }
+
+    .toast i {
+      font-size: 1.5em;
+      color: var(--gold);
+    }
+
+    /* Activity Feed */
+    .activity-feed {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+    }
+
+    .activity-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .activity-content {
+      flex: 1;
+    }
+
+    .activity-title {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .activity-desc {
+      color: var(--coffee-medium);
+      font-size: 0.9em;
+    }
+
+    .activity-time {
+      color: var(--coffee-light);
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+
+    /* Grid Layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card-admin {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px var(--shadow);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .product-card-admin:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image-admin {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .product-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-card-admin:hover .product-overlay {
+      opacity: 1;
+    }
+
+    .product-details-admin {
+      padding: 15px;
+    }
+
+    .product-name-admin {
+      font-weight: 600;
+      color: var(--coffee-dark);
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    .product-price-admin {
+      color: var(--gold-dark);
+            font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+
+    .product-stock {
+      font-size: 0.85em;
+      color: var(--coffee-medium);
+    }
+
+    .stock-low {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .search-bar {
+        width: 300px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 992px) {
+      :root {
+        --sidebar-width: 0px;
+      }
+
+      .admin-sidebar {
+        transform: translateX(-100%);
+      }
+
+      .admin-sidebar.active {
+        transform: translateX(0);
+      }
+
+      .admin-main {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-topbar {
+        padding: 15px 20px;
+      }
+
+      .search-bar {
+        display: none;
+      }
+
+      .admin-content {
+        padding: 20px;
+      }
+
+      .page-title {
+        font-size: 2em;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .table-actions {
+        flex-direction: column;
+      }
+
+      .data-table {
+        font-size: 0.85em;
+      }
+
+      .chart-filters {
+        flex-wrap: wrap;
+      }
+
+      .topbar-right {
+        gap: 10px;
+      }
+
+      .profile-info {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .admin-content {
+        padding: 15px;
+      }
+
+      .page-title {
+        font-size: 1.6em;
+      }
+
+      .stat-value {
+        font-size: 1.5em;
+      }
+
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Fade out animation */
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen
+  <div class="loader">
+    <div class="loader-logo">Jay Law Klassic</div>
+  </div>-->
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">Jay Law <span>Klassic</span></a>
+        <div class="admin-role">Administrator Panel</div>
+      </div>
+
+      <nav class="admin-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Main</div>
+          <div class="nav-item active" data-section="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </div>
+          <div class="nav-item" data-section="orders">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Orders</span>
+            <span class="nav-badge">12</span>
+          </div>
+          <div class="nav-item" data-section="products">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+          </div>
+          <div class="nav-item" data-section="customers">
+            <i class="fas fa-users"></i>
+            <span>Customers</span>
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Management</div>
+          <div class="nav-item" data-section="analytics">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+          </div>
+          <div class="nav-item" data-section="reviews">
+            <i class="fas fa-star"></i>
+            <span>Reviews</span>
+          </div>
+          <div class="nav-item" data-section="inventory">
+            <i class="fas fa-warehouse"></i>
+            <span>Inventory</span>
+          </div>
+          <div class="nav-item" data-section="reports">
+            <i class="fas fa-file-invoice"></i>
+            <span>Reports</span>
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Settings</div>
+          <div class="nav-item" data-section="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </div>
+          <div class="nav-item" data-section="messages">
+            <i class="fas fa-envelope"></i>
+            <span>Messages</span>
+            <span class="nav-badge">5</span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="view-site-btn">
+          <i class="fas fa-external-link-alt"></i>
+          View Website
+        </a>
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main" id="adminMain">
+      <!-- Top Bar -->
+      <div class="admin-topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search orders, products, customers...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-icon" title="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">8</span>
+          </div>
+          <div class="topbar-icon" title="Messages">
+            <i class="fas fa-envelope"></i>
+            <span class="notification-badge">5</span>
+          </div>
+          <div class="admin-profile">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Admin" class="profile-avatar">
+            <div class="profile-info">
+              <div class="profile-name">Remilekun Adetututobi</div>
+              <div class="profile-role">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="admin-content">
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="dashboard-section">
+          <div class="page-header">
+            <h1 class="page-title">Dashboard Overview</h1>
+            <p class="page-subtitle">Welcome back! Here's what's happening with your store today.</p>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon blue">
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  12.5%
+                </div>
+              </div>
+              <div class="stat-label">Total Orders</div>
+              <div class="stat-value" id="totalOrders">1,245</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon green">
+                  <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  8.3%
+                </div>
+              </div>
+              <div class="stat-label">Total Revenue</div>
+              <div class="stat-value" id="totalRevenue">₦12.5M</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon orange">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  15.7%
+                </div>
+              </div>
+              <div class="stat-label">Total Customers</div>
+              <div class="stat-value" id="totalCustomers">3,428</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon red">
+                  <i class="fas fa-box"></i>
+                </div>
+                <div class="stat-trend down">
+                  <i class="fas fa-arrow-down"></i>
+                  3.2%
+                </div>
+              </div>
+              <div class="stat-label">Products</div>
+              <div class="stat-value" id="totalProducts">486</div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <a href="index.html" class="quick-action-card">
+              <div class="quick-action-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <div class="quick-action-title">Homepage</div>
+              <div class="quick-action-desc">View main site</div>
+            </a>
+
+            <a href="services.html" class="quick-action-card">
+              <div class="quick-action-icon">
+                <i class="fas fa-concierge-bell"></i>
+              </div>
+              <div class="quick-action-title">Services</div>
+              <div class="quick-action-desc">Manage services</div>
+            </a>
+
+            <a href="shop.html" class="quick-action-card">
+              <div class="quick-action-icon">
+                <i class="fas fa-store"></i>
+              </div>
+              <div class="quick-action-title">Shop</div>
+              <div class="quick-action-desc">Browse products</div>
+            </a>
+
+            <div class="quick-action-card" onclick="showSection('products'); openModal('addProductModal')">
+              <div class="quick-action-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="quick-action-title">Add Product</div>
+              <div class="quick-action-desc">Create new item</div>
+            </div>
+          </div>
+
+          <!-- Charts and Activity -->
+          <div class="grid-2">
+            <div class="chart-container">
+              <div class="chart-header">
+                <h3 class="chart-title">Sales Overview</h3>
+                <div class="chart-filters">
+                  <button class="filter-btn active" data-period="week">Week</button>
+                  <button class="filter-btn" data-period="month">Month</button>
+                  <button class="filter-btn" data-period="year">Year</button>
+                </div>
+              </div>
+              <div class="chart-canvas">
+                <canvas id="salesChart"></canvas>
+              </div>
+            </div>
+
+            <div class="activity-feed">
+              <h3 class="chart-title" style="margin-bottom: 25px;">Recent Activity</h3>
+              
+              <div class="activity-item">
+                <div class="activity-icon" style="background: rgba(76, 175, 80, 0.1); color: var(--success);">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">New order received</div>
+                  <div class="activity-desc">Order #ORD-2024-156 from Blessing Okafor</div>
+                  <div class="activity-time">2 minutes ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon" style="background: rgba(33, 150, 243, 0.1); color: var(--info);">
+                  <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">New customer registered</div>
+                  <div class="activity-desc">Chioma Adeyemi joined the platform</div>
+                  <div class="activity-time">15 minutes ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon" style="background: rgba(255, 152, 0, 0.1); color: var(--warning);">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">New review posted</div>
+                  <div class="activity-desc">5-star review on "Elegant Evening Gown"</div>
+                  <div class="activity-time">1 hour ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon" style="background: rgba(229, 57, 53, 0.1); color: var(--danger);">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Low stock alert</div>
+                  <div class="activity-desc">"Traditional Ankara Dress" needs restocking</div>
+                  <div class="activity-time">2 hours ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section class="content-section" id="orders-section">
+          <div class="page-header">
+            <h1 class="page-title">Orders Management</h1>
+            <p class="page-subtitle">View and manage all customer orders</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Recent Orders</h3>
+              <div class="table-actions">
+                <button class="btn btn-secondary" onclick="filterOrders()">
+                  <i class="fas fa-filter"></i>
+                  Filter
+                </button>
+                <button class="btn btn-secondary" onclick="exportTableToCSV('orders')">
+                  <i class="fas fa-download"></i>
+                  Export
+                </button>
+                <button class="btn btn-primary" onclick="openModal('newOrderModal')">
+                  <i class="fas fa-plus"></i>
+                  New Order
+                </button>
+              </div>
+                        </div>
+
+            <table class="data-table" id="ordersTable">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <tr>
+                  <td class="order-id">#ORD-2024-156</td>
+                  <td>
+                    <div class="customer-info">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Customer" class="customer-avatar">
+                      <div>
+                        <div style="font-weight: 600; color: var(--coffee-dark);">Blessing Okafor</div>
+                        <div style="font-size: 0.85em;">blessing@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Jan 20, 2024</td>
+                  <td style="font-weight: 700; color: var(--gold-dark);">₦45,000</td>
+                  <td><span class="status-badge status-processing">Processing</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-secondary" title="View" onclick="viewOrder('#ORD-2024-156')">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary" title="Update Status" onclick="updateOrderStatus('#ORD-2024-156')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteOrder(this)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="order-id">#ORD-2024-155</td>
+                  <td>
+                    <div class="customer-info">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Customer" class="customer-avatar">
+                      <div>
+                        <div style="font-weight: 600; color: var(--coffee-dark);">Chukwudi Nnamdi</div>
+                        <div style="font-size: 0.85em;">chukwudi@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Jan 19, 2024</td>
+                  <td style="font-weight: 700; color: var(--gold-dark);">₦82,500</td>
+                  <td><span class="status-badge status-completed">Completed</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-secondary" title="View" onclick="viewOrder('#ORD-2024-155')">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary" title="Update Status" onclick="updateOrderStatus('#ORD-2024-155')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteOrder(this)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="content-section" id="products-section">
+          <div class="page-header">
+            <h1 class="page-title">Products Management</h1>
+            <p class="page-subtitle">Manage your product inventory</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Product Inventory</h3>
+              <div class="table-actions">
+                <button class="btn btn-secondary" onclick="filterProducts()">
+                  <i class="fas fa-filter"></i>
+                  Filter
+                </button>
+                <button class="btn btn-primary" onclick="openModal('addProductModal')">
+                  <i class="fas fa-plus"></i>
+                  Add Product
+                </button>
+              </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+              <!-- Products will be rendered here by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Customers Section -->
+        <section class="content-section" id="customers-section">
+          <div class="page-header">
+            <h1 class="page-title">Customers Management</h1>
+            <p class="page-subtitle">View and manage customer accounts</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Customer List</h3>
+              <div class="table-actions">
+                <button class="btn btn-secondary" onclick="filterCustomers()">
+                  <i class="fas fa-filter"></i>
+                  Filter
+                </button>
+                <button class="btn btn-secondary" onclick="exportTableToCSV('customers')">
+                  <i class="fas fa-download"></i>
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <table class="data-table" id="customersTable">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Orders</th>
+                  <th>Total Spent</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="customer-info">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Customer" class="customer-avatar">
+                      <div>
+                        <div style="font-weight: 600; color: var(--coffee-dark);">Blessing Okafor</div>
+                        <div style="font-size: 0.85em; color: var(--coffee-medium);">Joined Jan 2024</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>blessing@example.com</td>
+                  <td>+234 803 456 7890</td>
+                  <td>8</td>
+                  <td style="font-weight: 700; color: var(--gold-dark);">₦385,000</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-secondary" title="View" onclick="viewCustomer('Blessing Okafor')">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary" title="Edit" onclick="editCustomer('Blessing Okafor')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="customer-info">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Customer" class="customer-avatar">
+                      <div>
+                        <div style="font-weight: 600; color: var(--coffee-dark);">Chukwudi Nnamdi</div>
+                        <div style="font-size: 0.85em; color: var(--coffee-medium);">Joined Dec 2023</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>chukwudi@example.com</td>
+                  <td>+234 805 123 4567</td>
+                  <td>12</td>
+                  <td style="font-weight: 700; color: var(--gold-dark);">₦542,000</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-secondary" title="View" onclick="viewCustomer('Chukwudi Nnamdi')">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary" title="Edit" onclick="editCustomer('Chukwudi Nnamdi')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="content-section" id="analytics-section">
+          <div class="page-header">
+            <h1 class="page-title">Analytics & Insights</h1>
+            <p class="page-subtitle">Track your business performance</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon green">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  24.8%
+                </div>
+              </div>
+              <div class="stat-label">Conversion Rate</div>
+              <div class="stat-value">3.2%</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon blue">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  18.5%
+                </div>
+              </div>
+              <div class="stat-label">Page Views</div>
+              <div class="stat-value">45,892</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon orange">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  5.3%
+                </div>
+              </div>
+              <div class="stat-label">Avg. Session</div>
+              <div class="stat-value">4m 32s</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon red">
+                  <i class="fas fa-undo"></i>
+                </div>
+                <div class="stat-trend down">
+                  <i class="fas fa-arrow-down"></i>
+                  12.1%
+                </div>
+              </div>
+              <div class="stat-label">Bounce Rate</div>
+              <div class="stat-value">32.5%</div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <div class="chart-header">
+              <h3 class="chart-title">Revenue Analytics</h3>
+              <div class="chart-filters">
+                <button class="filter-btn active" data-period="month">This Month</button>
+                <button class="filter-btn" data-period="lastmonth">Last Month</button>
+                <button class="filter-btn" data-period="year">This Year</button>
+              </div>
+            </div>
+            <div class="chart-canvas">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="content-section" id="reviews-section">
+          <div class="page-header">
+            <h1 class="page-title">Customer Reviews</h1>
+            <p class="page-subtitle">Manage product reviews and ratings</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Recent Reviews</h3>
+              <div class="table-actions">
+                <button class="btn btn-secondary" onclick="filterReviews()">
+                  <i class="fas fa-filter"></i>
+                  Filter
+                </button>
+              </div>
+            </div>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Rating</th>
+                  <th>Review</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="customer-info">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Customer" class="customer-avatar">
+                      <span style="font-weight: 600;">Blessing Okafor</span>
+                    </div>
+                  </td>
+                  <td>Elegant Evening Gown</td>
+                  <td>
+                    <div style="color: var(--gold);">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </td>
+                  <td style="max-width: 300px;">Absolutely beautiful! The quality is outstanding.</td>
+                  <td>Jan 20, 2024</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-success" title="Approve" onclick="approveReview(this)">
+                        <i class="fas fa-check"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteReview(this)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Inventory Section -->
+        <section class="content-section" id="inventory-section">
+          <div class="page-header">
+            <h1 class="page-title">Inventory Management</h1>
+            <p class="page-subtitle">Track and manage stock levels</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon green">
+                                    <i class="fas fa-check-circle"></i>
+                </div>
+              </div>
+              <div class="stat-label">In Stock</div>
+              <div class="stat-value">428</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon red">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+              </div>
+              <div class="stat-label">Low Stock</div>
+              <div class="stat-value">15</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon orange">
+                  <i class="fas fa-times-circle"></i>
+                </div>
+              </div>
+              <div class="stat-label">Out of Stock</div>
+              <div class="stat-value">3</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon blue">
+                  <i class="fas fa-boxes"></i>
+                </div>
+              </div>
+              <div class="stat-label">Total Products</div>
+              <div class="stat-value" id="inventoryTotal">486</div>
+            </div>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Stock Alerts</h3>
+            </div>
+
+            <table class="data-table" id="inventoryTable">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Current Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody">
+                <!-- Inventory items will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section class="content-section" id="reports-section">
+          <div class="page-header">
+            <h1 class="page-title">Reports</h1>
+            <p class="page-subtitle">Generate and download business reports</p>
+          </div>
+
+          <div class="quick-actions">
+            <div class="quick-action-card" onclick="generateReport('sales')">
+              <div class="quick-action-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="quick-action-title">Sales Report</div>
+              <div class="quick-action-desc">Download sales data</div>
+            </div>
+
+            <div class="quick-action-card" onclick="generateReport('inventory')">
+              <div class="quick-action-icon">
+                <i class="fas fa-boxes"></i>
+              </div>
+              <div class="quick-action-title">Inventory Report</div>
+              <div class="quick-action-desc">Stock levels & alerts</div>
+            </div>
+
+            <div class="quick-action-card" onclick="generateReport('customers')">
+              <div class="quick-action-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="quick-action-title">Customer Report</div>
+              <div class="quick-action-desc">Customer analytics</div>
+            </div>
+
+            <div class="quick-action-card" onclick="generateReport('revenue')">
+              <div class="quick-action-icon">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <div class="quick-action-title">Revenue Report</div>
+              <div class="quick-action-desc">Financial overview</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section class="content-section" id="settings-section">
+          <div class="page-header">
+            <h1 class="page-title">Settings</h1>
+            <p class="page-subtitle">Manage your store settings</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">General Settings</h3>
+            </div>
+
+            <form style="padding: 20px;" onsubmit="saveSettings(event)">
+              <div class="form-group">
+                <label class="form-label">Store Name</label>
+                <input type="text" class="form-input" value="Jay Law Klassic Wears">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Store Email</label>
+                <input type="email" class="form-input" value="info@jaylawklassic.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Store Phone</label>
+                <input type="tel" class="form-input" value="+234 803 456 7890">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Store Address</label>
+                <textarea class="form-textarea">123 Fashion Street, Wuse 2, Abuja, FCT 900211, Nigeria</textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                <i class="fas fa-save"></i>
+                Save Settings
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section class="content-section" id="messages-section">
+          <div class="page-header">
+            <h1 class="page-title">Messages</h1>
+            <p class="page-subtitle">View customer inquiries and messages</p>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 class="table-title">Inbox</h3>
+              <div class="table-actions">
+                <button class="btn btn-danger" onclick="deleteSelectedMessages()">
+                  <i class="fas fa-trash"></i>
+                  Delete Selected
+                </button>
+              </div>
+            </div>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAllMessages" onclick="toggleSelectAll()"></th>
+                  <th>From</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="message-checkbox"></td>
+                  <td>
+                    <div style="font-weight: 600; color: var(--coffee-dark);">Blessing Okafor</div>
+                    <div style="font-size: 0.85em;">blessing@example.com</div>
+                  </td>
+                  <td>Order Inquiry</td>
+                  <td style="max-width: 300px;">When will my order #ORD-2024-156 be delivered?</td>
+                  <td>2 hours ago</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-primary" title="Reply" onclick="replyMessage('Blessing Okafor', 'blessing@example.com')">
+                        <i class="fas fa-reply"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteMessage(this)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><input type="checkbox" class="message-checkbox"></td>
+                  <td>
+                    <div style="font-weight: 600; color: var(--coffee-dark);">Chioma Adeyemi</div>
+                    <div style="font-size: 0.85em;">chioma@example.com</div>
+                  </td>
+                  <td>Custom Order Request</td>
+                  <td style="max-width: 300px;">Can you make a custom wedding gown?</td>
+                  <td>5 hours ago</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon btn-primary" title="Reply" onclick="replyMessage('Chioma Adeyemi', 'chioma@example.com')">
+                        <i class="fas fa-reply"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteMessage(this)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal" id="addProductModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add New Product</h2>
+        <button class="close-modal" onclick="closeModal('addProductModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addProductForm" onsubmit="addProduct(event)">
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-input" name="name" placeholder="Enter product name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" name="category" required>
+              <option value="">Select category</option>
+              <option value="Traditional">Traditional</option>
+              <option value="Evening Wear">Evening Wear</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Casual">Casual</option>
+              <option value="Formal">Formal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Price (₦) *</label>
+            <input type="number" class="form-input" name="price" placeholder="0.00" required min="0" step="0.01">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Stock Quantity *</label>
+            <input type="number" class="form-input" name="stock" placeholder="0" required min="0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" name="description" placeholder="Product description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Product Image URL *</label>
+            <input type="url" class="form-input" name="image" placeholder="https://example.com/image.jpg" required>
+            <small style="color: var(--coffee-medium); font-size: 0.85em; margin-top: 5px; display: block;">
+              Paste an image URL from Unsplash or another image hosting service
+            </small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-plus"></i>
+            Add Product
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div class="modal" id="editProductModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Update Product</h2>
+        <button class="close-modal" onclick="closeModal('editProductModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="editProductForm" onsubmit="updateProduct(event)">
+          <input type="hidden" id="editProductId">
+          
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-input" id="editProductName" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" id="editProductCategory" required>
+              <option value="">Select category</option>
+              <option value="Traditional">Traditional</option>
+              <option value="Evening Wear">Evening Wear</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Casual">Casual</option>
+              <option value="Formal">Formal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Price (₦) *</label>
+            <input type="number" class="form-input" id="editProductPrice" required min="0" step="0.01">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Stock Quantity *</label>
+            <input type="number" class="form-input" id="editProductStock" required min="0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" id="editProductDescription"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Product Image URL *</label>
+            <input type="url" class="form-input" id="editProductImage" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-save"></i>
+            Update Product
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reply Message Modal -->
+  <div class="modal" id="replyMessageModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Reply to Message</h2>
+        <button class="close-modal" onclick="closeModal('replyMessageModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="sendReply(event)">
+          <div class="form-group">
+            <label class="form-label">To</label>
+            <input type="text" class="form-input" id="replyTo" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" id="replyEmail" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Your Reply *</label>
+            <textarea class="form-textarea" id="replyMessage" placeholder="Type your reply here..." required rows="6"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i>
+            Send Reply
+	           </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Restock Modal -->
+  <div class="modal" id="restockModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Restock Product</h2>
+        <button class="close-modal" onclick="closeModal('restockModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="restockProduct(event)">
+          <input type="hidden" id="restockProductId">
+          
+          <div class="form-group">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-input" id="restockProductName" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Current Stock</label>
+            <input type="number" class="form-input" id="restockCurrentStock" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Add Quantity *</label>
+            <input type="number" class="form-input" id="restockQuantity" placeholder="Enter quantity to add" required min="1">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-plus"></i>
+            Restock Product
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <div class="toast-message" id="toastMessage">Action completed successfully!</div>
+  </div>
+<div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+  <script>
+    // ==================== GLOBAL VARIABLES ====================
+    const adminSidebar = document.getElementById('adminSidebar');
+    const adminMain = document.getElementById('adminMain');
+    const menuToggle = document.getElementById('menuToggle');
+    const navItems = document.querySelectorAll('.nav-item');
+    const contentSections = document.querySelectorAll('.content-section');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Sample Products Data
+    let products = [
+      {
+        id: 1,
+        name: 'Elegant Evening Gown',
+        category: 'Evening Wear',
+        price: 45000,
+        stock: 25,
+        image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80',
+        description: 'Beautiful evening gown perfect for special occasions',
+        rating: 5,
+        reviews: 28,
+        sku: 'EEG-001'
+      },
+      {
+        id: 2,
+        name: 'Traditional Ankara Dress',
+        category: 'Traditional',
+        price: 32000,
+        stock: 3,
+        image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&q=80',
+        description: 'Vibrant traditional Ankara dress',
+        rating: 4.5,
+        reviews: 35,
+        sku: 'TAD-001'
+      },
+      {
+        id: 3,
+        name: 'Bespoke Blazer',
+        category: 'Corporate',
+        price: 55000,
+        stock: 18,
+        image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80',
+        description: 'Custom tailored blazer for professionals',
+        rating: 5,
+        reviews: 42,
+        sku: 'BB-002'
+      },
+      {
+        id: 4,
+        name: 'Designer Kaftan',
+        category: 'Traditional',
+        price: 38000,
+        stock: 32,
+        image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&q=80',
+        description: 'Elegant designer kaftan',
+        rating: 4.5,
+        reviews: 28,
+        sku: 'DK-002'
+      },
+      {
+        id: 5,
+        name: 'Leather Handbag',
+        category: 'Accessories',
+        price: 25000,
+        stock: 45,
+        image: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=400&q=80',
+        description: 'Premium leather handbag',
+        rating: 5,
+        reviews: 42,
+        sku: 'LH-005'
+      },
+      {
+        id: 6,
+        name: 'Silk Scarf Set',
+        category: 'Accessories',
+        price: 12000,
+        stock: 8,
+        image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&q=80',
+        description: 'Luxurious silk scarf set',
+        rating: 4,
+        reviews: 15,
+        sku: 'SSS-005'
+      }
+    ];
+
+    let salesChart = null;
+    let revenueChart = null;
+
+    // ==================== UTILITY FUNCTIONS ====================
+    
+    // Toast Notification
+    let toastTimeout;
+    function showToast(message, duration = 3000) {
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // Save products to localStorage
+    function saveProducts() {
+      localStorage.setItem('jaylawProducts', JSON.stringify(products));
+      updateDashboardStats();
+    }
+
+    // Load products from localStorage
+    function loadProducts() {
+      const saved = localStorage.getItem('jaylawProducts');
+      if (saved) {
+        products = JSON.parse(saved);
+      } else {
+        saveProducts();
+      }
+      updateDashboardStats();
+    }
+
+    // Update Dashboard Stats
+    function updateDashboardStats() {
+      document.getElementById('totalProducts').textContent = products.length;
+      document.getElementById('inventoryTotal').textContent = products.length;
+      
+      // Update inventory table
+      renderInventoryTable();
+    }
+
+    // ==================== NAVIGATION ====================
+    
+    // Menu Toggle
+    menuToggle.addEventListener('click', () => {
+      adminSidebar.classList.toggle('active');
+      adminMain.classList.toggle('expanded');
+      
+      const icon = menuToggle.querySelector('i');
+      if (adminSidebar.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Navigation Items
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = item.getAttribute('data-section');
+        
+        if (section) {
+          showSection(section);
+          
+          navItems.forEach(nav => nav.classList.remove('active'));
+          item.classList.add('active');
+          
+          if (window.innerWidth <= 992) {
+            adminSidebar.classList.remove('active');
+            adminMain.classList.remove('expanded');
+            menuToggle.querySelector('i').classList.remove('fa-times');
+            menuToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    });
+
+    // Show Section
+    function showSection(sectionName) {
+      contentSections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      const targetSection = document.getElementById(`${sectionName}-section`);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Render section-specific content
+        if (sectionName === 'products') {
+          renderProducts();
+        } else if (sectionName === 'inventory') {
+          renderInventoryTable();
+        } else if (sectionName === 'analytics') {
+          initializeRevenueChart();
+        }
+      }
+    }
+
+    // ==================== MODAL FUNCTIONS ====================
+    
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    // Keyboard Accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
+
+    // ==================== PRODUCT FUNCTIONS ====================
+    
+    // Render Products Grid
+    function renderProducts() {
+      const productGrid = document.getElementById('productGrid');
+      if (!productGrid) return;
+
+      productGrid.innerHTML = products.map(product => `
+        <div class="product-card-admin" data-id="${product.id}">
+          <div class="product-image-admin" style="background-image: url('${product.image}')">
+            <div class="product-overlay">
+              <button class="btn btn-icon btn-primary" title="Update" onclick="openEditProduct(${product.id})">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteProduct(${product.id})">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-details-admin">
+            <div class="product-name-admin">${product.name}</div>
+            <div class="product-price-admin">₦${product.price.toLocaleString()}</div>
+            <div class="product-stock ${product.stock < 10 ? 'stock-low' : ''}">
+              Stock: <strong>${product.stock}</strong> units
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Add Product
+    function addProduct(event) {
+      event.preventDefault();
+      const form = document.getElementById('addProductForm');
+      
+      const newProduct = {
+        id: Date.now(),
+        name: form.name.value,
+        category: form.category.value,
+        price: parseFloat(form.price.value),
+        stock: parseInt(form.stock.value),
+        image: form.image.value,
+        description: form.description.value,
+        rating: 5,
+        reviews: 0,
+        sku: generateSKU(form.name.value)
+      };
+
+      products.push(newProduct);
+      saveProducts();
+      renderProducts();
+      closeModal('addProductModal');
+      form.reset();
+      showToast('✅ Product added successfully! It will appear on Shop, Services, and Home pages.', 4000);
+    }
+
+    // Open Edit Product Modal
+    function openEditProduct(id) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      document.getElementById('editProductId').value = product.id;
+      document.getElementById('editProductName').value = product.name;
+      document.getElementById('editProductCategory').value = product.category;
+      document.getElementById('editProductPrice').value = product.price;
+      document.getElementById('editProductStock').value = product.stock;
+      document.getElementById('editProductDescription').value = product.description;
+      document.getElementById('editProductImage').value = product.image;
+
+      openModal('editProductModal');
+    }
+
+    // Update Product
+    function updateProduct(event) {
+      event.preventDefault();
+      
+      const id = parseInt(document.getElementById('editProductId').value);
+      const productIndex = products.findIndex(p => p.id === id);
+      
+      if (productIndex !== -1) {
+        products[productIndex] = {
+          ...products[productIndex],
+          name: document.getElementById('editProductName').value,
+          category: document.getElementById('editProductCategory').value,
+          price: parseFloat(document.getElementById('editProductPrice').value),
+          stock: parseInt(document.getElementById('editProductStock').value),
+          description: document.getElementById('editProductDescription').value,
+          image: document.getElementById('editProductImage').value
+        };
+
+        saveProducts();
+        renderProducts();
+        closeModal('editProductModal');
+        showToast('✅ Product updated successfully!', 3000);
+      }
+    }
+
+    // Delete Product
+    function deleteProduct(id) {
+      if (confirm('Are you sure you want to delete this product?')) {
+        products = products.filter(p => p.id !== id);
+        saveProducts();
+        renderProducts();
+        showToast('✅ Product deleted successfully!', 3000);
+      }
+    }
+
+    // Generate SKU
+    function generateSKU(name) {
+      const prefix = name.split(' ').map(word => word[0]).join('').toUpperCase();
+      const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+      return `${prefix}-${random}`;
+    }
+
+    // ==================== INVENTORY FUNCTIONS ====================
+    
+    // Render Inventory Table
+    function renderInventoryTable() {
+      const tbody = document.getElementById('inventoryTableBody');
+      if (!tbody) return;
+
+      const lowStockProducts = products.filter(p => p.stock < 10);
+
+      tbody.innerHTML = lowStockProducts.map(product => `
+        <tr>
+          <td>${product.name}</td>
+          <td>${product.sku}</td>
+          <td style="font-weight: 700; color: ${product.stock < 5 ? 'var(--danger)' : 'var(--warning)'};">${product.stock}</td>
+          <td>
+            <span class="status-badge ${product.stock < 5 ? 'status-cancelled' : 'status-pending'}">
+              ${product.stock < 5 ? 'Critical' : 'Low'}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-primary" onclick="openRestockModal(${product.id})">
+              <i class="fas fa-plus"></i>
+              Restock
+            </button>
+            <button class="btn btn-secondary" onclick="viewProduct(${product.id})">
+              <i class="fas fa-eye"></i>
+              View
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      if (lowStockProducts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px;">✅ All products are well stocked!</td></tr>';      }
+    }
+
+    // Open Restock Modal
+    function openRestockModal(id) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      document.getElementById('restockProductId').value = product.id;
+      document.getElementById('restockProductName').value = product.name;
+      document.getElementById('restockCurrentStock').value = product.stock;
+      document.getElementById('restockQuantity').value = '';
+
+      openModal('restockModal');
+    }
+
+    // Restock Product
+    function restockProduct(event) {
+      event.preventDefault();
+      
+      const id = parseInt(document.getElementById('restockProductId').value);
+      const quantity = parseInt(document.getElementById('restockQuantity').value);
+      const productIndex = products.findIndex(p => p.id === id);
+      
+      if (productIndex !== -1 && quantity > 0) {
+        products[productIndex].stock += quantity;
+        saveProducts();
+        renderInventoryTable();
+        closeModal('restockModal');
+        showToast(`✅ Successfully added ${quantity} units to inventory!`, 3000);
+      }
+    }
+
+    // View Product Details
+    function viewProduct(id) {
+      const product = products.find(p => p.id === id);
+      if (product) {
+        alert(`${product.name}\n\nSKU: ${product.sku}\nCategory: ${product.category}\nPrice: ₦${product.price.toLocaleString()}\nStock: ${product.stock} units\n\n${product.description}`);
+      }
+    }
+
+    // ==================== ORDER FUNCTIONS ====================
+    
+    // View Order
+    function viewOrder(orderId) {
+      showToast(`📦 Viewing order ${orderId}...`, 2000);
+    }
+
+    // Update Order Status
+    function updateOrderStatus(orderId) {
+      const statuses = ['Pending', 'Processing', 'Completed', 'Cancelled'];
+      const currentStatus = prompt(`Update status for ${orderId}:\n\n1. Pending\n2. Processing\n3. Completed\n4. Cancelled\n\nEnter number (1-4):`);
+      
+      if (currentStatus && currentStatus >= 1 && currentStatus <= 4) {
+        showToast(`✅ Order ${orderId} status updated to ${statuses[currentStatus - 1]}`, 3000);
+      }
+    }
+
+    // Delete Order
+    function deleteOrder(btn) {
+      if (confirm('Are you sure you want to delete this order?')) {
+        const row = btn.closest('tr');
+        if (row) {
+          row.style.animation = 'fadeOut 0.4s ease';
+          setTimeout(() => {
+            row.remove();
+            showToast('✅ Order deleted successfully!', 3000);
+          }, 400);
+        }
+      }
+    }
+
+    // Filter Orders
+    function filterOrders() {
+      showToast('🔍 Filtering orders...', 2000);
+    }
+
+    // ==================== CUSTOMER FUNCTIONS ====================
+    
+    // View Customer
+    function viewCustomer(name) {
+      showToast(`👤 Viewing ${name}'s profile...`, 2000);
+    }
+
+    // Edit Customer
+    function editCustomer(name) {
+      showToast(`✏️ Editing ${name}'s information...`, 2000);
+    }
+
+    // Filter Customers
+    function filterCustomers() {
+      showToast('🔍 Filtering customers...', 2000);
+    }
+
+    // ==================== REVIEW FUNCTIONS ====================
+    
+    // Approve Review
+    function approveReview(btn) {
+      showToast('✅ Review approved!', 3000);
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+    }
+
+    // Delete Review
+    function deleteReview(btn) {
+      if (confirm('Are you sure you want to delete this review?')) {
+        const row = btn.closest('tr');
+        if (row) {
+          row.style.animation = 'fadeOut 0.4s ease';
+          setTimeout(() => {
+            row.remove();
+            showToast('✅ Review deleted successfully!', 3000);
+          }, 400);
+        }
+      }
+    }
+
+    // Filter Reviews
+    function filterReviews() {
+      showToast('🔍 Filtering reviews...', 2000);
+    }
+
+    // ==================== MESSAGE FUNCTIONS ====================
+    
+    // Reply Message
+    function replyMessage(name, email) {
+      document.getElementById('replyTo').value = name;
+      document.getElementById('replyEmail').value = email;
+      document.getElementById('replyMessage').value = '';
+      openModal('replyMessageModal');
+    }
+
+    // Send Reply
+    function sendReply(event) {
+      event.preventDefault();
+      const email = document.getElementById('replyEmail').value;
+      const message = document.getElementById('replyMessage').value;
+      
+      closeModal('replyMessageModal');
+      showToast(`✅ Reply sent to ${email}!`, 3000);
+    }
+
+    // Delete Message
+    function deleteMessage(btn) {
+      if (confirm('Are you sure you want to delete this message?')) {
+        const row = btn.closest('tr');
+        if (row) {
+          row.style.animation = 'fadeOut 0.4s ease';
+          setTimeout(() => {
+            row.remove();
+            showToast('✅ Message deleted successfully!', 3000);
+          }, 400);
+        }
+      }
+    }
+
+    // Toggle Select All Messages
+    function toggleSelectAll() {
+      const selectAll = document.getElementById('selectAllMessages');
+      const checkboxes = document.querySelectorAll('.message-checkbox');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAll.checked;
+      });
+    }
+
+    // Delete Selected Messages
+    function deleteSelectedMessages() {
+      const checkboxes = document.querySelectorAll('.message-checkbox:checked');
+      if (checkboxes.length === 0) {
+        showToast('⚠️ Please select messages to delete', 2000);
+        return;
+      }
+      
+      if (confirm(`Delete ${checkboxes.length} selected message(s)?`)) {
+        checkboxes.forEach(checkbox => {
+          const row = checkbox.closest('tr');
+          if (row) {
+            row.style.animation = 'fadeOut 0.4s ease';
+            setTimeout(() => row.remove(), 400);
+          }
+        });
+        showToast(`✅ ${checkboxes.length} message(s) deleted!`, 3000);
+      }
+    }
+
+    // ==================== REPORT FUNCTIONS ====================
+    
+    // Generate Report
+    function generateReport(reportType) {
+      showToast(`📊 Generating ${reportType} report...`, 2000);
+      
+      setTimeout(() => {
+        // Create CSV data based on report type
+        let csvContent = '';
+        let filename = '';
+        
+        switch(reportType) {
+          case 'sales':
+            csvContent = 'Order ID,Customer,Date,Total,Status\n';
+            filename = 'sales-report.csv';
+            csvContent += '#ORD-2024-156,Blessing Okafor,Jan 20 2024,₦45000,Processing\n';
+            csvContent += '#ORD-2024-155,Chukwudi Nnamdi,Jan 19 2024,₦82500,Completed\n';
+            break;
+          case 'inventory':
+            csvContent = 'Product,SKU,Stock,Status\n';
+            filename = 'inventory-report.csv';
+            products.forEach(p => {
+              csvContent += `${p.name},${p.sku},${p.stock},${p.stock < 10 ? 'Low' : 'Good'}\n`;
+            });
+            break;
+          case 'customers':
+            csvContent = 'Customer,Email,Phone,Orders,Total Spent\n';
+            filename = 'customers-report.csv';
+            csvContent += 'Blessing Okafor,blessing@example.com,+234 803 456 7890,8,₦385000\n';
+            csvContent += 'Chukwudi Nnamdi,chukwudi@example.com,+234 805 123 4567,12,₦542000\n';
+            break;
+          case 'revenue':
+            csvContent = 'Month,Revenue,Orders,Customers\n';
+            filename = 'revenue-report.csv';
+            csvContent += 'January 2024,₦12500000,1245,3428\n';
+            break;
+        }
+        
+        // Create and download CSV
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        
+        showToast(`✅ ${reportType.charAt(0).toUpperCase() + reportType.slice(1)} report downloaded!`, 3000);
+      }, 2000);
+    }
+
+    // Export Table to CSV
+    function exportTableToCSV(tableName) {
+      const table = document.querySelector('.content-section.active table');
+      if (!table) {
+        showToast('⚠️ No table to export', 2000);
+        return;
+      }
+
+      let csv = [];
+      const rows = table.querySelectorAll('tr');
+      
+      rows.forEach(row => {
+        const cols = row.querySelectorAll('td, th');
+        const rowData = Array.from(cols).map(col => `"${col.textContent.trim()}"`);
+        csv.push(rowData.join(','));
+      });
+
+      const csvContent = csv.join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${tableName}-export-${Date.now()}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      
+      showToast('✅ Data exported successfully!', 3000);
+    }
+
+    // ==================== SETTINGS FUNCTIONS ====================
+    
+    // Save Settings
+    function saveSettings(event) {
+      event.preventDefault();
+      showToast('✅ Settings saved successfully!', 3000);
+    }
+
+    // Filter Products
+    function filterProducts() {
+      showToast('🔍 Filtering products...', 2000);
+    }
+
+    // ==================== CHART FUNCTIONS ====================
+    
+    // Initialize Sales Chart
+    function initializeSalesChart() {
+      const ctx = document.getElementById('salesChart');
+      if (!ctx) return;
+
+      const chartData = {
+        week: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: [12000, 19000, 15000, 25000, 22000, 30000, 28000]
+        },
+        month: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          data: [85000, 92000, 88000, 95000]
+        },
+        year: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          data: [320000, 280000, 350000, 390000, 410000, 450000, 480000, 520000, 490000, 530000, 560000, 620000]
+        }
+      };
+
+      if (salesChart) {
+        salesChart.destroy();
+      }
+
+      salesChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: chartData.week.labels,
+          datasets: [{
+            label: 'Sales (₦)',
+            data: chartData.week.data,
+            borderColor: '#D4AF37',
+            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return '₦' + value.toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Chart filter buttons
+      const filterBtns = document.querySelectorAll('#dashboard-section .filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const period = this.getAttribute('data-period');
+          salesChart.data.labels = chartData[period].labels;
+          salesChart.data.datasets[0].data = chartData[period].data;
+          salesChart.update();
+          
+          showToast(`📊 Sales chart updated: ${period}`, 2000);
+        });
+      });
+    }
+
+    // Initialize Revenue Chart
+    function initializeRevenueChart() {
+      const ctx = document.getElementById('revenueChart');
+      if (!ctx) return;
+
+      if (revenueChart) {
+        revenueChart.destroy();
+      }
+
+      revenueChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue (₦)',
+            data: [320000, 280000, 350000, 390000, 410000, 450000],
+            backgroundColor: 'rgba(212, 175, 55, 0.8)',
+            borderColor: '#D4AF37',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return '₦' + value.toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // ==================== UTILITY FUNCTIONS ====================
+    
+    // Logout
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        showToast('Logging out...', 2000);
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      }
+    }
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 992) {
+          adminSidebar.classList.remove('active');
+          adminMain.classList.remove('expanded');
+        }
+      }, 250);
+    });
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar input');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (searchInput) {
+      let searchTimeout;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        const query = e.target.value.trim().toLowerCase();
+
+        searchTimeout = setTimeout(() => {
+          if (!query) {
+            showToast('🔎 Search cleared', 1200);
+            return;
+          }
+
+          // Simple search across products, orders and customers (client-side)
+          const matchedProducts = products.filter(p =>
+            p.name.toLowerCase().includes(query) ||
+            p.category.toLowerCase().includes(query) ||
+            p.sku.toLowerCase().includes(query)
+          );
+
+          // If currently viewing products, render filtered results
+          const activeSection = document.querySelector('.content-section.active');
+          if (activeSection && activeSection.id === 'products-section') {
+            const productGrid = document.getElementById('productGrid');
+            if (matchedProducts.length) {
+              productGrid.innerHTML = matchedProducts.map(product => `
+                <div class="product-card-admin" data-id="${product.id}">
+                  <div class="product-image-admin" style="background-image: url('${product.image}')">
+                    <div class="product-overlay">
+                      <button class="btn btn-icon btn-primary" title="Update" onclick="openEditProduct(${product.id})">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-icon btn-danger" title="Delete" onclick="deleteProduct(${product.id})">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-details-admin">
+                    <div class="product-name-admin">${product.name}</div>
+                    <div class="product-price-admin">₦${product.price.toLocaleString()}</div>
+                    <div class="product-stock ${product.stock < 10 ? 'stock-low' : ''}">
+                      Stock: <strong>${product.stock}</strong> units
+                    </div>
+                  </div>
+                </div>
+              `).join('');
+              showToast(`🔎 ${matchedProducts.length} product(s) found`, 1600);
+            } else {
+              productGrid.innerHTML = `<div style="padding:40px; text-align:center; color:var(--coffee-medium);">No products match "${query}"</div>`;
+              showToast('⚠️ No products found', 1600);
+            }
+          } else {
+            // Generic feedback for search when not on products page
+            showToast(`🔎 Found ${matchedProducts.length} product(s) matching "${query}"`, 1600);
+          }
+        }, 450);
+      });
+    }
+
+    // Initialize charts and UI after load
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 700);
+
+      loadProducts();
+      renderProducts();
+      renderInventoryTable();
+      initializeSalesChart();
+      initializeRevenueChart();
+
+      // Attach global click listeners for accessibility (delegate)
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-icon');
+        if (!btn) return;
+        // Prevent double actions from delegated events; handled in specific onclicks
+      });
+
+      showToast('✅ Admin Dashboard ready', 1500);
+    });
+
+    // Listen to storage events to update UI if admin modifies products in another tab
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'jaylawProducts') {
+        loadProducts();
+        renderProducts();
+        renderInventoryTable();
+        showToast('🔁 Products updated from another tab', 1800);
+      }
+    });
+  </script>
+</body>
+</html>

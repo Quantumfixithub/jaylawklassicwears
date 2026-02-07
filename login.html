@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | Jay Law Klassic</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: Poppins, sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; background:#f5f5f5; margin:0;}
+    .card { background:#fff; padding:28px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.08); width:360px; }
+    h2 { margin-bottom:10px; font-family:Playfair Display, serif;}
+    .form-group{margin-bottom:14px}
+    input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
+    button{width:100%;padding:12px;border:0;border-radius:8px;background:#D4AF37;color:#2b1b17;font-weight:700;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Sign in</h2>
+    <p>Use any email to sign in (demo)</p>
+    <form id="loginForm">
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <input type="hidden" id="redirectTo" />
+      <button type="submit">Sign in</button>
+    </form>
+    <p style="font-size:0.9em; color:#666; margin-top:12px;">This demo uses localStorage for session. For production, implement server authentication.</p>
+  </div>
+<div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+  <script>
+    // If a redirect param is present, store it
+    const params = new URLSearchParams(location.search);
+    const redirect = params.get('redirect') || '';
+    document.getElementById('redirectTo').value = redirect;
+
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      // simple session object
+      const user = { email: email, name: email.split('@')[0] || 'User' };
+      localStorage.setItem('jaylawUser', JSON.stringify(user));
+      // show toast? simple alert then redirect
+      const target = document.getElementById('redirectTo').value || 'index.html';
+      location.href = target;
+    });
+  </script>
+</body>
+</html>

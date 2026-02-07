@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Jay Law Klassic Wears - Get in Touch</title>
+  <meta name="description" content="Contact Jay Law Klassic Wears for custom tailoring, fashion training, or inquiries. Visit us in Abuja or reach out via phone, email, or WhatsApp.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #8D6E63;
+      --cream: #FFF8E7;
+      --gold: #D4AF37;
+      --gold-dark: #B8941E;
+      --gold-light: #E5C158;
+      --white: #FFFFFF;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #E5C158 100%);
+      --coffee-gradient: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--coffee-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Loading Screen */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--coffee-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+      /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 248, 231, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 20px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px var(--shadow);
+      transition: padding 0.3s ease, background 0.3s ease;
+      border-bottom: 2px solid var(--gold-light);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      background: rgba(62, 39, 35, 0.98);
+    }
+
+    header.scrolled .logo,
+    header.scrolled nav a {
+      color: var(--gold);
+    }
+
+    header.scrolled nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+  display: flex;              /* put image + text side by side */
+  align-items: center;        /* vertically align */
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo img {
+  height: 40px;               /* adjust logo size */
+  width: auto;
+  margin-right: 10px;         /* space between image and text */
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--coffee-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-dark);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+
+    /* Page Hero */
+    .page-hero {
+      height: 60vh;
+      min-height: 500px;
+      background: linear-gradient(rgba(62, 39, 35, 0.85), rgba(62, 39, 35, 0.85)),
+                  url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=1600&q=80') center/cover fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--gold-light);
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-subtitle {
+      font-size: 1.2em;
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4em;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .page-hero p {
+      font-size: 1.3em;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--gold-light);
+      line-height: 1.8;
+    }
+
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .breadcrumb a {
+      color: var(--coffee-medium);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold-dark);
+    }
+
+    .breadcrumb span {
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Contact Info */
+    .contact-info-section {
+      background: var(--coffee-gradient);
+      padding: 50px;
+      border-radius: 20px;
+      color: var(--gold-light);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-info-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .contact-info-section p {
+      margin-bottom: 35px;
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(10px);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      flex-shrink: 0;
+    }
+
+    .contact-text h3 {
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .contact-text p {
+      margin: 0;
+      color: var(--gold-light);
+      line-height: 1.6;
+    }
+
+    .contact-text a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-text a:hover {
+      color: var(--gold);
+    }
+
+    /* Social Links */
+    .social-section {
+      padding-top: 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .social-section h3 {
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      background: rgba(212, 175, 55, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 1.3em;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Contact Form */
+    .contact-form-section {
+      background: var(--white);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px var(--shadow);
+    }
+
+    .contact-form-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      color: var(--coffee-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .contact-form-section p {
+      color: var(--coffee-medium);
+      margin-bottom: 35px;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .form-group label .required {
+      color: #E53935;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 15px;
+      border: 2px solid var(--cream);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background: var(--white);
+      color: var(--coffee-dark);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-btn {
+      padding: 18px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 10px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+            justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 80px 0;
+      background: var(--cream);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-subtitle {
+      color: var(--gold);
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: var(--coffee-dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .section-description {
+      font-size: 1.1em;
+      color: var(--coffee-medium);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+      height: 500px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Business Hours */
+    .hours-section {
+      padding: 80px 0;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .hours-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px var(--shadow);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hours-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+    }
+
+    .hours-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 2em;
+      color: var(--coffee-dark);
+    }
+
+    .hours-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      color: var(--coffee-dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hours-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cream);
+      color: var(--coffee-medium);
+    }
+
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+
+    .hours-list .day {
+      font-weight: 600;
+      color: var(--coffee-dark);
+    }
+
+    .hours-list .time {
+      color: var(--gold-dark);
+    }
+
+    .hours-list .closed {
+      color: #E53935;
+      font-weight: 600;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 80px 0;
+      background: var(--cream);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .faq-question {
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: var(--cream);
+    }
+
+    .faq-question h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--coffee-dark);
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+
+    .faq-icon {
+      width: 35px;
+      height: 35px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 30px 25px;
+    }
+
+    .faq-answer p {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: -100px;
+      right: 30px;
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 10002;
+      transition: bottom 0.4s ease;
+      max-width: 400px;
+    }
+
+    .toast.show {
+      bottom: 30px;
+    }
+
+    .toast i {
+      font-size: 1.5em;
+      color: var(--gold);
+    }
+
+    .toast-message {
+      flex: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--coffee-gradient);
+      color: var(--gold-light);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 8px;
+    }
+
+    .footer-links a i {
+      font-size: 0.8em;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+      font-size: 0.95em;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.7);
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse-whatsapp 2s infinite;
+      text-decoration: none;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      animation: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 30px;
+      }
+
+      .contact-wrapper {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2.5em;
+      }
+
+      .page-hero h1 {
+        font-size: 3em;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .map-container {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--coffee-dark);
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        gap: 25px;
+        align-items: flex-start;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        color: var(--gold-light);
+        font-size: 1.1em;
+        width: 100%;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      .page-hero {
+        height: 50vh;
+        min-height: 400px;
+      }
+
+      .page-hero h1 {
+        font-size: 2.5em;
+      }
+
+      .page-hero p {
+        font-size: 1.1em;
+      }
+
+      .section-title {
+        font-size: 2em;
+      }
+
+      .contact-info-section,
+      .contact-form-section {
+        padding: 35px 25px;
+      }
+
+      .hours-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .back-to-top,
+      .whatsapp-float {
+        right: 20px;
+      }
+
+      .whatsapp-float {
+        bottom: 90px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8em;
+      }
+
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3em;
+      }
+
+      .toast {
+        right: 20px;
+        left: 20px;
+        max-width: calc(100% - 40px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.5em;
+      }
+
+      .page-hero {
+        margin-top: 70px;
+      }
+
+      .page-hero h1 {
+        font-size: 2em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+
+      .contact-info-section,
+      .contact-form-section,
+      .hours-card {
+        padding: 25px 20px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .map-container {
+        height: 300px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      header, footer, .back-to-top, .whatsapp-float, .toast {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .contact-form-section,
+      .contact-info-section {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Accessibility */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen
+  <div class="loader">
+    <div class="loader-logo">Jay Law Klassic Wears</div>
+  </div>-->
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">Jay Law <span>Klassic Wears</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav id="nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html" class="active">Contact</a>
+	  <div class="nav-icons">
+            <a href="account.html" class="nav-icon" title="My Account">
+              <i class="fas fa-user"></i>
+            </a>
+            
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-subtitle">Get in Touch</p>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Reach out for custom tailoring, training inquiries, or any questions you may have.</p>
+    </div>
+  </section>
+
+ 
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <!-- Contact Info -->
+        <div class="contact-info-section">
+          <h2>Let's Connect</h2>
+          <p>Whether you're looking for bespoke tailoring, fashion training, or have a special project in mind, we're here to help bring your vision to life.</p>
+
+          <div class="contact-details">
+            <!-- Address -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Visit Our Studio</h3>
+                <p>123 Fashion Street, Wuse 2<br>Abuja, FCT 900211<br>Nigeria</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Call Us</h3>
+                <p>
+                  <a href="tel:+2348034567890">+234 803 456 7890</a><br>
+                  <a href="tel:+2349012345678">+234 901 234 5678</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Email Us</h3>
+                <p>
+                  <a href="mailto:info@jaylawklassic.com">info@jaylawklassic.com</a><br>
+                  <a href="mailto:training@jaylawklassic.com">training@jaylawklassic.com</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Business Hours</h3>
+                <p>
+                  Mon - Fri: 8:00 AM - 6:00 PM<br>
+                  Saturday: 9:00 AM - 4:00 PM<br>
+                  Sunday: Closed
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2>Send Us a Message</h2>
+          <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In <span class="required">*</span></label>
+              <select id="service" name="service" required>
+                <option value="">-- Select a Service --</option>
+                <option value="custom-tailoring">Custom Tailoring</option>
+                <option value="bridal-wear">Bridal Wear</option>
+                <option value="traditional-attire">Traditional Attire</option>
+                <option value="fashion-training">Fashion Training</option>
+                <option value="alterations">Alterations & Repairs</option>
+                <option value="corporate-wear">Corporate Wear</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget Range (Optional)</label>
+              <select id="budget" name="budget">
+                <option value="">-- Select Budget --</option>
+                <option value="under-50k">Under ₦50,000</option>
+                <option value="50k-100k">₦50,000 - ₦100,000</option>
+                <option value="100k-200k">₦100,000 - ₦200,000</option>
+                <option value="200k-500k">₦200,000 - ₦500,000</option>
+                <option value="above-500k">Above ₦500,000</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message <span class="required">*</span></label>
+              <textarea id="message" name="message" placeholder="Tell us about your project, timeline, and any specific requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Find Us</p>
+        <h2 class="section-title">Our Location</h2>
+        <p class="section-description">Visit our studio in the heart of Abuja. We're easily accessible and offer ample parking.</p>
+      </div>
+
+      <div class="map-container">
+        <!-- Replace with your actual Google Maps embed -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.9328534891543!2d7.490445614770562!3d9.067267093492076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0baf7da48d0d%3A0x99a8fe4168c50bc8!2sWuse%202%2C%20Abuja%2C%20Nigeria!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Jay Law Klassic Wears Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Hours -->
+  <section class="hours-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">When We're Open</p>
+        <h2 class="section-title">Business Hours</h2>
+        <p class="section-description">We're here to serve you during the following hours. Walk-ins are welcome, but appointments are recommended for consultations.</p>
+      </div>
+
+      <div class="hours-grid">
+        <!-- Store Hours -->
+        <div class="hours-card">
+          <div class="hours-icon">
+            <i class="fas fa-store"></i>
+          </div>
+          <h3>Store Hours</h3>
+          <ul class="hours-list">
+            <li>
+              <span class="day">Monday</span>
+              <span class="time">8:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Tuesday</span>
+              <span class="time">8:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Wednesday</span>
+              <span class="time">8:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Thursday</span>
+              <span class="time">8:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Friday</span>
+              <span class="time">8:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Saturday</span>
+              <span class="time">9:00 AM - 4:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Sunday</span>
+              <span class="closed">Closed</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Training Hours -->
+        <div class="hours-card">
+          <div class="hours-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Training Classes</h3>
+          <ul class="hours-list">
+            <li>
+              <span class="day">Weekday Classes</span>
+              <span class="time">10:00 AM - 4:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Evening Classes</span>
+              <span class="time">5:00 PM - 8:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Weekend Workshop</span>
+              <span class="time">Sat & Sun</span>
+            </li>
+            <li>
+              <span class="day">Private Sessions</span>
+              <span class="time">By Appointment</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Support Hours -->
+        <div class="hours-card">
+          <div class="hours-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Customer Support</h3>
+          <ul class="hours-list">
+            <li>
+              <span class="day">Phone Support</span>
+              <span class="time">8:00 AM - 7:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Email Response</span>
+              <span class="time">Within 24 Hours</span>
+            </li>
+            <li>
+              <span class="day">WhatsApp</span>
+              <span class="time">24/7 Available</span>
+            </li>
+            <li>
+              <span class="day">Social Media</span>
+              <span class="time">Daily Updates</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Common Questions</p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">Find quick answers to the most common questions about our services and policies.</p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do I schedule a consultation?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>You can schedule a consultation by calling us at +234 803 456 7890, sending us an email, or filling out the contact form above. We recommend booking at least 2-3 days in advance to ensure availability.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What should I bring for my first appointment?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+                        <p>For tailoring consultations, bring any reference images, fabric samples if you have them, and your measurements if available. For training inquiries, just bring your questions and enthusiasm to learn!</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How long does custom tailoring take?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Standard custom pieces typically take 2-4 weeks depending on complexity and our current workload. Rush orders can be accommodated for an additional fee. We'll provide a specific timeline during your consultation.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer payment plans?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer flexible payment plans for both tailoring services and training programs. Typically, we require a 50% deposit to begin work, with the balance due upon completion. Contact us to discuss options that work for your budget.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is your cancellation policy?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Appointments can be rescheduled or cancelled up to 24 hours in advance without penalty. For custom orders in progress, cancellations may incur fees depending on the stage of completion. We'll always work with you to find the best solution.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you provide delivery services?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer delivery within Abuja and can arrange shipping to other locations in Nigeria. Delivery fees vary based on location. International shipping is also available for special orders.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I visit without an appointment?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Walk-ins are welcome during business hours! However, we highly recommend scheduling an appointment to ensure we can give you our full attention and avoid wait times, especially on weekends.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you work with corporate clients?</h3>
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We have extensive experience with corporate uniforms, branded apparel, and bulk orders. We offer special pricing for corporate clients and can accommodate large-scale projects. Contact us to discuss your corporate needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <div class="toast-message" id="toastMessage">Message sent successfully!</div>
+  </div>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop" role="button" aria-label="Back to top" tabindex="0">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/2348034567890" target="_blank" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Jay Law Klassic Wears</h3>
+          <p>Your destination for bespoke tailoring, fashion training, and timeless style. Crafting excellence since 2009.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Training</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Custom Tailoring</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Bridal Wear</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Fashion Training</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Wear</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Alterations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <div class="contact-details">
+            <div class="contact-item" style="background: transparent; padding: 0; margin-bottom: 15px;">
+              <i class="fas fa-map-marker-alt" style="color: var(--gold); margin-top: 3px;"></i>
+              <span style="color: var(--gold-light);">123 Fashion Street, Wuse 2, Abuja</span>
+            </div>
+            <div class="contact-item" style="background: transparent; padding: 0; margin-bottom: 15px;">
+              <i class="fas fa-phone" style="color: var(--gold);"></i>
+              <span style="color: var(--gold-light);">+234 803 456 7890</span>
+            </div>
+            <div class="contact-item" style="background: transparent; padding: 0; margin-bottom: 15px;">
+              <i class="fas fa-envelope" style="color: var(--gold);"></i>
+              <span style="color: var(--gold-light);">info@jaylawklassic.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // DOM Elements
+    const header = document.getElementById('header');
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const contactForm = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const backToTop = document.getElementById('backToTop');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    // Toast Notification Function
+    let toastTimeout;
+    function showToast(message, duration = 3000) {
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Back to Top Button
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Mobile Menu Toggle
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Contact Form Submission
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Simulate API call (replace with actual backend endpoint)
+      try {
+        // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) });
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        console.log('Contact Form Data:', data);
+        
+        // Show success message
+        showToast('✅ Message sent successfully! We\'ll get back to you within 24 hours.', 5000);
+        
+        // Reset form
+        contactForm.reset();
+        
+      } catch (error) {
+        showToast('❌ Failed to send message. Please try again or contact us directly.', 4000);
+        console.error('Form submission error:', error);
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    // FAQ Accordion
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        faqItems.forEach(faq => {
+          faq.classList.remove('active');
+        });
+        
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Back to Top
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    backToTop.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    // Keyboard Accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Intersection Observer for Animation on Scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.contact-item, .hours-card, .faq-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Loading Screen
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 800);
+    });
+
+    // Prevent FOUC
+    document.documentElement.style.visibility = 'visible';
+
+    // Form Validation Enhancement
+    const inputs = contactForm.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+            input.addEventListener('invalid', (e) => {
+        e.preventDefault();
+        input.style.borderColor = '#E53935';
+        
+        setTimeout(() => {
+          input.style.borderColor = '';
+        }, 3000);
+      });
+
+      input.addEventListener('input', () => {
+        if (input.validity.valid) {
+          input.style.borderColor = '#4CAF50';
+        }
+      });
+    });
+
+    // Phone Number Formatting
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) {
+        value = value.slice(0, 11);
+      }
+      e.target.value = value;
+    });
+
+    // Auto-resize Textarea
+    const messageTextarea = document.getElementById('message');
+    messageTextarea.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    });
+
+    // Console Message
+    console.log('%c📞 Jay Law Klassic Wears - Contact Page', 'color: #D4AF37; font-size: 20px; font-weight: bold;');
+    console.log('%c✨ We\'d love to hear from you!', 'color: #4CAF50; font-size: 14px;');
+    console.log('%cFor support: info@jaylawklassic.com', 'color: #999; font-size: 12px;');
+
+    // Service Worker Registration (Progressive Web App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => console.log('SW registered:', registration))
+          .catch(error => console.log('SW registration failed:', error));
+      });
+    }
+
+    // Analytics Event Tracking (replace with your analytics code)
+    function trackEvent(category, action, label) {
+      console.log('Event tracked:', { category, action, label });
+      // Example: gtag('event', action, { event_category: category, event_label: label });
+    }
+
+    // Track form interactions
+    contactForm.addEventListener('submit', () => {
+      trackEvent('Contact', 'Form Submit', 'Contact Form');
+    });
+
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('Contact', 'Phone Click', link.textContent);
+      });
+    });
+
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('Contact', 'Email Click', link.textContent);
+      });
+    });
+
+    // Track WhatsApp clicks
+    document.querySelector('.whatsapp-float').addEventListener('click', () => {
+      trackEvent('Contact', 'WhatsApp Click', 'Float Button');
+    });
+
+    // Track map interactions
+    const mapContainer = document.querySelector('.map-container');
+    if (mapContainer) {
+      mapContainer.addEventListener('click', () => {
+        trackEvent('Contact', 'Map Interaction', 'Location Map');
+      });
+    }
+
+    // Dynamic Copyright Year
+    const currentYear = new Date().getFullYear();
+    const copyrightText = document.querySelector('.footer-bottom p:first-child');
+    if (copyrightText) {
+      copyrightText.textContent = `© ${currentYear} Jay Law Klassic Wears. All Rights Reserved.`;
+    }
+
+    // Detect Browser and OS for better support
+    const userAgent = navigator.userAgent;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+    const isAndroid = /Android/i.test(userAgent);
+
+    if (isMobile) {
+      document.body.classList.add('mobile-device');
+      if (isIOS) document.body.classList.add('ios-device');
+      if (isAndroid) document.body.classList.add('android-device');
+    }
+
+    // Handle online/offline status
+    window.addEventListener('online', () => {
+      showToast('✅ Connection restored. You\'re back online!', 3000);
+    });
+
+    window.addEventListener('offline', () => {
+      showToast('⚠️ You\'re offline. Some features may be unavailable.', 4000);
+    });
+
+    // Lazy load images if any
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              imageObserver.unobserve(img);
+            }
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Check if user has visited before (welcome back message)
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setTimeout(() => {
+        showToast('👋 Welcome to Jay Law Klassic! We\'re excited to help you.', 4000);
+        localStorage.setItem('hasVisited', 'true');
+      }, 2000);
+    }
+
+    // Save form data to localStorage (draft feature)
+    const saveFormDraft = () => {
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+      localStorage.setItem('contactFormDraft', JSON.stringify(data));
+    };
+
+    // Load form draft if exists
+    const loadFormDraft = () => {
+      const draft = localStorage.getItem('contactFormDraft');
+      if (draft) {
+        const data = JSON.parse(draft);
+        Object.keys(data).forEach(key => {
+          const input = contactForm.querySelector(`[name="${key}"]`);
+          if (input && data[key]) {
+            input.value = data[key];
+          }
+        });
+        showToast('📝 Draft loaded from your last visit', 3000);
+      }
+    };
+
+    // Auto-save draft every 30 seconds
+    let draftInterval;
+    contactForm.addEventListener('input', () => {
+      clearInterval(draftInterval);
+      draftInterval = setInterval(saveFormDraft, 30000);
+    });
+
+    // Clear draft after successful submission
+    contactForm.addEventListener('submit', () => {
+      localStorage.removeItem('contactFormDraft');
+      clearInterval(draftInterval);
+    });
+
+    // Load draft on page load (optional)
+    // Uncomment the line below to enable draft loading
+    // loadFormDraft();
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl/Cmd + K to focus on first input
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('firstName').focus();
+      }
+
+      // Ctrl/Cmd + Enter to submit form (when focused)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        if (document.activeElement.form === contactForm) {
+          e.preventDefault();
+          contactForm.dispatchEvent(new Event('submit'));
+        }
+      }
+    });
+
+    // Add ripple effect to buttons (material design)
+    function createRipple(event) {
+      const button = event.currentTarget;
+      const ripple = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+      ripple.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+      ripple.style.top = `${event.clientY - button.offsetTop - radius}px`;
+      ripple.classList.add('ripple');
+
+      const rippleStyle = document.createElement('style');
+      rippleStyle.textContent = `
+        .ripple {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.6);
+          transform: scale(0);
+          animation: ripple-animation 0.6s ease-out;
+          pointer-events: none;
+        }
+        @keyframes ripple-animation {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
+      if (!document.querySelector('style[data-ripple]')) {
+        rippleStyle.setAttribute('data-ripple', '');
+        document.head.appendChild(rippleStyle);
+      }
+
+      button.style.position = 'relative';
+      button.style.overflow = 'hidden';
+
+      const existingRipple = button.querySelector('.ripple');
+      if (existingRipple) {
+        existingRipple.remove();
+      }
+
+      button.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 600);
+    }
+
+    // Add ripple to all buttons
+    document.querySelectorAll('.submit-btn, .back-to-top').forEach(button => {
+      button.addEventListener('click', createRipple);
+    });
+
+    // Print functionality
+    window.addEventListener('beforeprint', () => {
+      console.log('Preparing page for printing...');
+    });
+
+    window.addEventListener('afterprint', () => {
+      console.log('Print completed or cancelled.');
+    });
+
+    // Detect if page is being viewed in iframe
+    if (window !== window.top) {
+      console.warn('This page is being displayed in an iframe.');
+      document.body.style.border = '5px solid #E53935';
+    }
+
+    // Performance monitoring
+    window.addEventListener('load', () => {
+      const perfData = window.performance.timing;
+      const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+      console.log(`Page loaded in ${pageLoadTime}ms`);
+
+      if (pageLoadTime > 3000) {
+        console.warn('Page load time is above 3 seconds. Consider optimization.');
+      }
+    });
+
+    // Accessibility: Announce dynamic content to screen readers
+    function announceToScreenReader(message) {
+      const announcement = document.createElement('div');
+      announcement.setAttribute('role', 'status');
+      announcement.setAttribute('aria-live', 'polite');
+      announcement.className = 'visually-hidden';
+      announcement.textContent = message;
+      document.body.appendChild(announcement);
+
+      setTimeout(() => {
+        announcement.remove();
+      }, 1000);
+    }
+
+    // Use when needed
+    contactForm.addEventListener('submit', () => {
+      announceToScreenReader('Form submitted successfully. We will contact you soon.');
+    });
+
+    // Final initialization
+    console.log('%c✅ Contact page fully initialized!', 'color: #4CAF50; font-weight: bold;');
+  </script>
+</body>
+</html>

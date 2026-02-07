@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - Jay Law Klassic Wears</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #3E2723;
+      --coffee-medium: #5D4037;
+      --coffee-light: #795548;
+      --gold: #D4AF37;
+      --gold-light: #F4E4C1;
+      --gold-dark: #B8960F;
+      --cream: #FFF8E7;
+      --white: #FFFFFF;
+      --black: #1a1a1a;
+      --shadow: rgba(62, 39, 35, 0.15);
+      --gradient: linear-gradient(135deg, #D4AF37 0%, #B8960F 100%);
+      --coffee-gradient: linear-gradient(135deg, #5D4037 0%, #3E2723 100%);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--coffee-dark);
+      overflow-x: hidden;
+      background: var(--cream);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--coffee-gradient);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s, visibility 0.8s;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+     .loader-logo {
+  display: flex;
+  flex-direction: column;   /* stack logo above text */
+  align-items: center;
+  font-size: 3em;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 30px;
+  animation: fadeInScale 1s ease;
+}
+
+.loader-logo img {
+  width: 120px;             /* adjust logo size */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .loader::after {
+      content: '';
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(212, 175, 55, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+   /* Header & Navigation */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 248, 231, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 20px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px var(--shadow);
+  transition: padding 0.3s ease, background 0.3s ease;
+  border-bottom: 2px solid var(--gold-light);
+}
+
+header.scrolled {
+  padding: 12px 0;
+  background: rgba(62, 39, 35, 0.98);
+}
+
+header.scrolled .logo,
+header.scrolled nav a {
+  color: var(--gold);
+}
+
+header.scrolled nav a:hover {
+  color: var(--gold-light);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+nav a {
+  color: var(--coffee-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--gold-dark);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--coffee-dark);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+    /* Page Hero */
+.page-hero {
+  height: 60vh;
+  background: 
+    linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.7)),
+    url('https://media.istockphoto.com/id/1443311080/photo/portrait-of-african-american-tailor-man-looking-at-the-camera-smiling-in-atelier-studio.webp?a=1&b=1&s=612x612&w=0&k=20&c=x4_eyEaHwfd7huIsagTkrQg9XbSy5-_qS4TfnD5DHaI=');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  opacity: 0.3;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease;
+}
+
+.page-subtitle {
+  font-size: 1em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.page-hero h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+}
+
+.page-hero p {
+  font-size: 1.2em;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Down Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator i {
+  font-size: 2em;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 30px 20px;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .breadcrumb a {
+      color: var(--coffee-medium);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold);
+    }
+
+    .breadcrumb span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Services Introduction */
+    .services-intro {
+      padding: 100px 20px;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.9em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 3.5em;
+      color: var(--coffee-dark);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    .section-description {
+      max-width: 800px;
+      margin: 40px auto 0;
+      color: var(--coffee-medium);
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+
+    /* Service Categories */
+    .service-categories {
+      padding: 80px 20px;
+      background: var(--cream);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 60px auto;
+    }
+
+    .category-card {
+      background: var(--white);
+      padding: 50px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 50px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .category-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 60px rgba(212, 175, 55, 0.4);
+    }
+
+    .category-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 3em;
+      color: var(--coffee-dark);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover .category-icon {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .category-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--coffee-dark);
+      font-weight: 600;
+    }
+
+    .category-description {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-size: 1.05em;
+    }
+
+    .category-link {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.3s ease;
+      font-size: 1.05em;
+    }
+
+    .category-link:hover {
+      gap: 20px;
+    }
+
+    /* Detailed Services Section */
+    .detailed-services {
+      padding: 100px 20px;
+      background: var(--white);
+    }
+
+    .service-detail {
+      max-width: 1400px;
+      margin: 0 auto 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .service-detail:nth-child(even) {
+      direction: rtl;
+    }
+
+    .service-detail:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .service-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px var(--shadow);
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-image:hover img {
+      transform: scale(1.1);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .service-content {
+      padding: 20px;
+    }
+
+    .service-content h2 {
+      font-size: 2.5em;
+      margin-bottom: 25px;
+      color: var(--coffee-dark);
+      font-weight: 700;
+    }
+
+    .service-content p {
+      color: var(--coffee-medium);
+      line-height: 2;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .service-features {
+      list-style: none;
+            margin-bottom: 40px;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      font-size: 1.05em;
+      color: var(--coffee-medium);
+    }
+
+    .service-features li i {
+      color: var(--gold);
+      font-size: 1.3em;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 100px 20px;
+      background: var(--coffee-gradient);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1558769132-cb1aea9c615e?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 60px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .pricing-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(212, 175, 55, 0.5);
+      border-color: var(--gold);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--gold);
+      transform: scale(1.05);
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .pricing-card.featured::after {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      padding: 8px 50px;
+      transform: rotate(45deg);
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .pricing-header {
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-icon {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+
+    .pricing-title {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .pricing-subtitle {
+      color: var(--gold-light);
+      opacity: 0.8;
+      font-size: 0.95em;
+    }
+
+    .pricing-price {
+      margin: 40px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-amount {
+      font-size: 4em;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .price-currency {
+      font-size: 0.5em;
+      vertical-align: super;
+    }
+
+    .price-period {
+      color: var(--gold-light);
+      font-size: 0.9em;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 40px;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features li {
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--gold-light);
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-features li i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .pricing-btn {
+      width: 100%;
+      padding: 18px 40px;
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 1;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .pricing-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+    }
+
+    .pricing-card.featured .pricing-btn {
+      background: var(--white);
+      color: var(--coffee-dark);
+    }
+
+    /* Process Timeline */
+    .process-timeline {
+      padding: 100px 20px;
+      background: var(--cream);
+    }
+
+    .timeline {
+      max-width: 1000px;
+      margin: 60px auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gradient);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 50%;
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-left: 50%;
+      padding-right: 0;
+    }
+
+    .timeline-content {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px var(--shadow);
+      width: calc(100% - 80px);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      color: var(--coffee-dark);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      z-index: 1;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: var(--coffee-dark);
+    }
+
+    .timeline-content p {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    .timeline-number {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 3em;
+      font-weight: 700;
+      color: var(--gold-light);
+      opacity: 0.3;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      padding: 100px 20px;
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 60px auto 0;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px var(--shadow);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 6em;
+      color: var(--gold);
+      opacity: 0.2;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 25px;
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+    }
+
+    .testimonial-info h4 {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-info p {
+      color: var(--gold-dark);
+      font-size: 0.9em;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 100px 20px;
+      background: var(--cream);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .faq-question {
+      padding: 25px 30px;
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: var(--gold-light);
+    }
+
+    .faq-question h3 {
+      font-size: 1.3em;
+      color: var(--coffee-dark);
+      font-weight: 600;
+    }
+
+    .faq-icon {
+      font-size: 1.5em;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 30px;
+      background: var(--cream);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 25px 30px;
+    }
+
+    .faq-answer p {
+      color: var(--coffee-medium);
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 20px;
+      background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)),
+                  url('https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=1600&q=80') center/cover no-repeat;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: 3em;
+      margin-bottom: 25px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .cta-description {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      color: var(--gold-light);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 18px 45px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: var(--coffee-dark);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gold);
+      color: var(--coffee-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--coffee-dark);
+      color: var(--gold-light);
+      padding: 80px 20px 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto 50px;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      font-size: 1.5em;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--gold);
+      color: var(--coffee-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2em;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      background: var(--gold-light);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-item i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+    }
+    .footer-logo {
+  height: 40px;       /* adjust size */
+  width: auto;
+  margin-right: 10px; /* space between logo and text */
+  vertical-align: middle;
+}
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coffee-dark);
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.7);
+    }
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .service-detail {
+        gap: 40px;
+      }
+
+      .service-content h2 {
+        font-size: 2.2em;
+      }
+
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        padding-left: 80px;
+        padding-right: 0;
+        justify-content: flex-start;
+      }
+
+      .timeline-icon {
+        left: 30px;
+        transform: translate(0, -50%);
+      }
+
+      .timeline-content {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--coffee-dark);
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        gap: 25px;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        color: var(--gold-light);
+        font-size: 1.1em;
+      }
+
+      nav a::after {
+        background: var(--gold);
+      }
+
+      header.scrolled nav a {
+        color: var(--gold-light);
+      }
+
+      .page-hero {
+        height: 50vh;
+      }
+
+      .page-hero h1 {
+        font-size: 2.5em;
+      }
+
+      .section-title {
+        font-size: 2.5em;
+      }
+
+      .service-detail {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .service-detail:nth-child(even) {
+        direction: ltr;
+      }
+
+      .service-image img {
+        height: 400px;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-title {
+        font-size: 2.2em;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .back-to-top,
+      .whatsapp-float {
+        right: 20px;
+      }
+
+      .whatsapp-float {
+        bottom: 90px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .page-hero h1 {
+        font-size: 2em;
+      }
+
+      .page-subtitle {
+        font-size: 0.9em;
+      }
+
+      .section-title {
+        font-size: 2em;
+      }
+
+      .category-title {
+        font-size: 1.6em;
+      }
+
+      .service-content h2 {
+        font-size: 1.8em;
+      }
+
+      .price-amount {
+        font-size: 3em;
+      }
+
+      .pricing-title {
+        font-size: 1.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen 
+  <div class="loader">
+    <div class="loader-logo">Jay Law Klassic</div>
+  </div>-->
+
+ <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+     <a href="index.html" class="logo">
+  <!--<img src="Jay-Law_logo.jpg" alt="Jay-Law Klassic Wears Logo">-->
+  Jay-Law <span>Klassic Wears</span>
+</a>
+
+        <nav id="nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html">Contact</a>
+	  <a href="cart.html">Cart</a>
+	    <div class="nav-icons">
+            <a href="account.html" class="nav-icon" title="My Account">
+              <i class="fas fa-user"></i>
+            </a>
+            
+          </div>
+        </nav>
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i>
+</button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-subtitle">What We Offer</p>
+      <h1>Our Services</h1>
+      <p>Premium tailoring and fashion services crafted with precision, passion, and unparalleled expertise.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="home.html">Home</a> / <span>Services</span>
+    </div>
+  </div>-->
+
+  <!-- Services Introduction -->
+  <section class="services-intro">
+    <div class="container">
+      <p class="section-label">Excellence in Craftsmanship</p>
+      <h2 class="section-title">Why Choose Our Services</h2>
+      <p class="section-description">With over a decade of experience in bespoke tailoring, we combine traditional craftsmanship with modern design to create garments that reflect your unique style and personality. Every stitch tells a story of dedication to excellence.</p>
+    </div>
+  </section>
+
+  <!-- Service Categories -->
+  <section class="service-categories">
+    <div class="container">
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon">👔</div>
+          <h3 class="category-title">Bespoke Tailoring</h3>
+          <p class="category-description">Custom-made garments designed exclusively for you, ensuring a perfect fit and timeless elegance.</p>
+          <a href="#bespoke" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🧵</div>
+          <h3 class="category-title">Expert Alterations</h3>
+          <p class="category-description">Professional alterations and repairs to ensure your garments fit perfectly and last longer.</p>
+          <a href="#alterations" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">👗</div>
+          <h3 class="category-title">Ready-to-Wear</h3>
+          <p class="category-description">Curated collections of premium ready-made garments for every occasion.</p>
+          <a href="#ready-made" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">💍</div>
+          <h3 class="category-title">Bridal Collection</h3>
+          <p class="category-description">Exquisite wedding and formal wear designed to make your special day unforgettable.</p>
+          <a href="#bridal" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🎨</div>
+          <h3 class="category-title">Custom Design</h3>
+          <p class="category-description">Bring your vision to life with our bespoke design consultation services.</p>
+          <a href="#custom" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">👶</div>
+          <h3 class="category-title">Children's Fashion</h3>
+          <p class="category-description">Adorable and comfortable designs for your little ones' every occasion.</p>
+          <a href="#kids" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Services -->
+  <section class="detailed-services">
+    <div class="container">
+      <!-- Bespoke Tailoring -->
+      <div class="service-detail" id="bespoke">
+        <div class="service-image">
+          <span class="service-badge">Premium Service</span>
+          <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&q=80" alt="Bespoke Tailoring">
+        </div>
+        <div class="service-content">
+          <h2>Bespoke Tailoring</h2>
+          <p>Experience the ultimate in personalized fashion with our bespoke tailoring services. From initial consultation to final fitting, we work closely with you to create garments that are uniquely yours.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Personal design consultation</li>
+            <li><i class="fas fa-check-circle"></i> Premium fabric selection</li>
+            <li><i class="fas fa-check-circle"></i> Precise measurements and fittings</li>
+            <li><i class="fas fa-check-circle"></i> Hand-finished details</li>
+            <li><i class="fas fa-check-circle"></i> Lifetime alterations included</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Consultation</a>
+        </div>
+      </div>
+
+      <!-- Expert Alterations -->
+      <div class="service-detail" id="alterations">
+                <div class="service-image">
+          <span class="service-badge">Fast Service</span>
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80" alt="Expert Alterations">
+        </div>
+        <div class="service-content">
+          <h2>Expert Alterations</h2>
+          <p>Our skilled tailors provide professional alterations to ensure your garments fit perfectly. Whether it's adjusting a hem, taking in a waist, or completely restyling a piece, we handle it with precision and care.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Same-day service available</li>
+            <li><i class="fas fa-check-circle"></i> Hem adjustments (pants, skirts, dresses)</li>
+            <li><i class="fas fa-check-circle"></i> Taking in or letting out garments</li>
+            <li><i class="fas fa-check-circle"></i> Zipper replacements</li>
+            <li><i class="fas fa-check-circle"></i> Button and fastener repairs</li>
+            <li><i class="fas fa-check-circle"></i> Complete restyling services</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-tools"></i> Get Alterations</a>
+        </div>
+      </div>
+
+      <!-- Ready-to-Wear -->
+      <div class="service-detail" id="ready-made">
+        <div class="service-image">
+          <span class="service-badge">New Collection</span>
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Ready-to-Wear">
+        </div>
+        <div class="service-content">
+          <h2>Ready-to-Wear Collection</h2>
+          <p>Browse our carefully curated collections of ready-made garments. Each piece is crafted with the same attention to detail as our bespoke items, offering quality and style without the wait.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Latest fashion trends</li>
+            <li><i class="fas fa-check-circle"></i> Premium quality fabrics</li>
+            <li><i class="fas fa-check-circle"></i> Sizes for all body types</li>
+            <li><i class="fas fa-check-circle"></i> Seasonal collections</li>
+            <li><i class="fas fa-check-circle"></i> Free minor alterations with purchase</li>
+            <li><i class="fas fa-check-circle"></i> Easy returns and exchanges</li>
+          </ul>
+          <a href="shop.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Collection</a>
+        </div>
+      </div>
+
+      <!-- Bridal Collection -->
+      <div class="service-detail" id="bridal">
+        <div class="service-image">
+          <span class="service-badge">Exclusive</span>
+          <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=800&q=80" alt="Bridal Collection">
+        </div>
+        <div class="service-content">
+          <h2>Bridal Collection</h2>
+          <p>Make your special day unforgettable with our exquisite bridal collection. From wedding gowns to traditional attire, we create breathtaking pieces that capture your vision perfectly.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Custom bridal gown design</li>
+            <li><i class="fas fa-check-circle"></i> Traditional wedding attire (Agbada, Iro & Buba)</li>
+            <li><i class="fas fa-check-circle"></i> Bridesmaid dresses</li>
+            <li><i class="fas fa-check-circle"></i> Groom's suits and accessories</li>
+            <li><i class="fas fa-check-circle"></i> Multiple fitting sessions</li>
+            <li><i class="fas fa-check-circle"></i> Emergency alterations on wedding day</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-heart"></i> Book Bridal Consultation</a>
+        </div>
+      </div>
+
+      <!-- Custom Design -->
+      <div class="service-detail" id="custom">
+        <div class="service-image">
+          <span class="service-badge">Signature Service</span>
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea9c615e?w=800&q=80" alt="Custom Design">
+        </div>
+        <div class="service-content">
+          <h2>Custom Design Services</h2>
+          <p>Have a unique vision? Our design team works with you to bring your ideas to life. From concept sketches to final creation, we ensure your custom piece is exactly what you imagined.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> One-on-one design consultation</li>
+            <li><i class="fas fa-check-circle"></i> Concept sketches and mood boards</li>
+            <li><i class="fas fa-check-circle"></i> Fabric sourcing assistance</li>
+            <li><i class="fas fa-check-circle"></i> Pattern making and draping</li>
+            <li><i class="fas fa-check-circle"></i> Prototype creation</li>
+            <li><i class="fas fa-check-circle"></i> Unlimited revisions</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-palette"></i> Start Custom Design</a>
+        </div>
+      </div>
+
+      <!-- Children's Fashion -->
+      <div class="service-detail" id="kids">
+        <div class="service-image">
+          <span class="service-badge">Family Friendly</span>
+          <img src="https://images.unsplash.com/photo-1503919436766-7316ce882937?w=800&q=80" alt="Children's Fashion">
+        </div>
+        <div class="service-content">
+          <h2>Children's Fashion</h2>
+          <p>Adorable, comfortable, and durable clothing for your little ones. From everyday wear to special occasion outfits, we create pieces that kids love and parents trust.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check-circle"></i> Comfortable, kid-friendly fabrics</li>
+            <li><i class="fas fa-check-circle"></i> Sizes from newborn to teen</li>
+            <li><i class="fas fa-check-circle"></i> School uniforms and casual wear</li>
+            <li><i class="fas fa-check-circle"></i> Party and celebration outfits</li>
+            <li><i class="fas fa-check-circle"></i> Traditional children's attire</li>
+            <li><i class="fas fa-check-circle"></i> Growth-friendly designs</li>
+          </ul>
+          <a href="shop.html" class="btn btn-primary"><i class="fas fa-child"></i> Shop Kids Collection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" style="color: var(--gold);">Transparent Pricing</p>
+        <h2 class="section-title" style="color: var(--gold-light);">Service Packages</h2>
+        <p class="section-description" style="color: var(--gold-light);">Choose the package that best fits your needs. All prices are starting rates and may vary based on complexity and fabric choice.</p>
+      </div>
+      
+      <div class="pricing-grid">
+        <!-- Basic Package -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon">🧵</div>
+            <h3 class="pricing-title">Basic Alterations</h3>
+            <p class="pricing-subtitle">Quick fixes and simple adjustments</p>
+          </div>
+          <div class="pricing-price">
+            <span class="price-amount"><span class="price-currency">₦</span>5,000</span>
+            <span class="price-period">Starting from</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Hem adjustments</li>
+            <li><i class="fas fa-check"></i> Simple taking in/out</li>
+            <li><i class="fas fa-check"></i> Button replacements</li>
+            <li><i class="fas fa-check"></i> Zipper repairs</li>
+            <li><i class="fas fa-check"></i> 3-5 day turnaround</li>
+          </ul>
+          <a href="contact.html" class="pricing-btn">Get Started</a>
+        </div>
+
+        <!-- Standard Package -->
+        <div class="pricing-card featured">
+          <div class="pricing-header">
+            <div class="pricing-icon">👔</div>
+            <h3 class="pricing-title">Bespoke Tailoring</h3>
+            <p class="pricing-subtitle">Custom-made garments</p>
+          </div>
+          <div class="pricing-price">
+            <span class="price-amount"><span class="price-currency">₦</span>50,000</span>
+            <span class="price-period">Starting from</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Personal consultation</li>
+            <li><i class="fas fa-check"></i> Premium fabric selection</li>
+            <li><i class="fas fa-check"></i> Multiple fittings</li>
+            <li><i class="fas fa-check"></i> Hand-finished details</li>
+            <li><i class="fas fa-check"></i> Lifetime alterations</li>
+            <li><i class="fas fa-check"></i> 2-3 week turnaround</li>
+          </ul>
+          <a href="contact.html" class="pricing-btn">Book Consultation</a>
+        </div>
+
+        <!-- Premium Package -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon">💎</div>
+            <h3 class="pricing-title">Luxury Collection</h3>
+            <p class="pricing-subtitle">Premium bespoke experience</p>
+          </div>
+          <div class="pricing-price">
+            <span class="price-amount"><span class="price-currency">₦</span>150,000</span>
+            <span class="price-period">Starting from</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Designer consultation</li>
+            <li><i class="fas fa-check"></i> Luxury fabric imports</li>
+            <li><i class="fas fa-check"></i> Unlimited fittings</li>
+            <li><i class="fas fa-check"></i> Intricate embellishments</li>
+            <li><i class="fas fa-check"></i> Priority service</li>
+            <li><i class="fas fa-check"></i> Free home delivery</li>
+          </ul>
+          <a href="contact.html" class="pricing-btn">Inquire Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="process-timeline">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Our Tailoring Process</h2>
+        <p class="section-description">From concept to creation, we ensure every step of your tailoring journey is seamless and enjoyable.</p>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">01</span>
+            <h3>Consultation & Design</h3>
+            <p>We discuss your vision, style preferences, occasion requirements, and take initial measurements. Browse our fabric collection and finalize your design concept.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">02</span>
+            <h3>Measurements & Pattern</h3>
+            <p>Precise measurements are taken to ensure a perfect fit. Our master tailors create your unique pattern, considering your body shape and posture.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-ruler"></i>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">03</span>
+            <h3>Fabric Selection</h3>
+            <p>Choose from our extensive collection of premium fabrics, or we can source specific materials based on your preferences and budget.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-swatchbook"></i>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">04</span>
+            <h3>Crafting & Construction</h3>
+            <p>Our skilled artisans begin crafting your garment with meticulous attention to detail. Traditional techniques meet modern innovation.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-cut"></i>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">05</span>
+            <h3>First Fitting</h3>
+            <p>Try on your garment for the first time. We make necessary adjustments to ensure the perfect fit and comfort.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-number">06</span>
+            <h3>Final Touches & Delivery</h3>
+            <p>After final adjustments and quality checks, your garment is ready. We deliver it to you, perfectly pressed and ready to wear.</p>
+          </div>
+          <div class="timeline-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Client Success Stories</p>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-description">Don't just take our word for it. Hear from clients who have experienced our exceptional service.</p>
+      </div>
+      
+              <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"The bespoke suit I got for my wedding was absolutely perfect! The attention to detail was incredible, and I received so many compliments. Jay Law truly understands elegance."</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Tunde Adeyemi" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Tunde Adeyemi</h4>
+              <p>Groom, Lagos</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"I've been a client for 3 years now. Their alterations service is fast and reliable. My wedding dress was beyond my dreams - they captured my vision perfectly!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=47" alt="Ada Okafor" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Ada Okafor</h4>
+              <p>Bride, Abuja</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Professional service from start to finish. They transformed my old suit into something modern and stylish. The craftsmanship is outstanding!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=33" alt="Ibrahim Musa" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Ibrahim Musa</h4>
+              <p>Business Executive</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"The custom design service is exceptional! They helped me create a unique outfit for my graduation. I felt confident and stylish. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=45" alt="Chioma Nwankwo" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Chioma Nwankwo</h4>
+              <p>Graduate Student</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Their children's collection is amazing! My kids look adorable in their custom outfits, and the quality is excellent. Worth every naira!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=38" alt="Fatima Bello" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Fatima Bello</h4>
+              <p>Mother of Two</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Fast turnaround on alterations without compromising quality. They fixed my suit the same day! Professional, courteous, and skilled. My go-to tailor now."</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=52" alt="Michael Obi" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h4>Michael Obi</h4>
+              <p>Entrepreneur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Common Questions</p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">Find answers to the most common questions about our services, pricing, and process.</p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How long does it take to complete a bespoke garment?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Typically, a bespoke garment takes 2-3 weeks from initial consultation to final delivery. This includes fabric selection, multiple fittings, and hand-finishing. For complex designs or during busy seasons (wedding periods), it may take up to 4 weeks. We also offer rush services for an additional fee.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer same-day alterations?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer same-day alterations for simple adjustments like hemming, button replacements, and minor taking in/out. Please bring your garment before 12 PM for same-day service. Complex alterations typically take 3-5 business days.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What fabrics do you work with?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We work with all types of fabrics including cotton, linen, silk, wool, cashmere, velvet, lace, ankara, and traditional Nigerian fabrics like aso-oke and george. We also source specialty fabrics upon request. Our team is experienced in handling delicate and luxury materials.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I bring my own fabric?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! You're welcome to bring your own fabric. We'll assess the material and advise on the best construction methods. Please ensure you bring sufficient yardage - we can provide guidance on required amounts during consultation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is your payment policy?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>For bespoke orders, we require a 50% deposit to begin work, with the balance due upon completion. Alterations are paid in full when you pick up your garment. We accept cash, bank transfers, and all major debit cards. Installment plans are available for large orders above ₦200,000.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer home service?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer home consultation and measurement services for premium packages and large orders (minimum ₦150,000). We also provide free delivery within Abuja for orders above ₦50,000. Delivery charges apply for areas outside our standard service zones.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What if the garment doesn't fit after completion?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We stand behind our work! If a garment doesn't fit properly, we'll make necessary alterations at no extra charge within 30 days of delivery. For bespoke pieces, lifetime alterations are included for weight fluctuations (within reasonable limits). Your satisfaction is our priority.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you cater to plus-size clients?</h3>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We specialize in creating beautiful garments for all body types. Our bespoke service ensures every piece is tailored to your exact measurements, celebrating your unique shape. We have extensive experience with plus-size fashion and understand the importance of proper fit and flattering designs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Experience Excellence?</h2>
+      <p class="cta-description">Book a consultation today and let us create something extraordinary for you. Whether it's a bespoke suit, wedding dress, or simple alterations, we're here to exceed your expectations.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fas fa-calendar-check"></i> Book Consultation
+        </a>
+        <a href="shop.html" class="btn btn-secondary">
+          <i class="fas fa-shopping-bag"></i> Browse Collections
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3> <img src="Jay-Law_logo.jpg" alt="Jay Law Klassic Wears Logo" class="footer-logo"> Jay Law Klassic Wears </h3>
+          <p>Elevating style through exceptional craftsmanship. We specialize in bespoke tailoring, alterations, and ready-to-wear fashion for men, women, and children.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Training</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html#bespoke"><i class="fas fa-chevron-right"></i> Bespoke Tailoring</a></li>
+            <li><a href="services.html#alterations"><i class="fas fa-chevron-right"></i> Alterations</a></li>
+            <li><a href="services.html#ready-made"><i class="fas fa-chevron-right"></i> Ready-to-Wear</a></li>
+            <li><a href="services.html#bridal"><i class="fas fa-chevron-right"></i> Bridal Collection</a></li>
+            <li><a href="training.html"><i class="fas fa-chevron-right"></i> Fashion Training</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Fashion Street, Wuse 2, Abuja, Nigeria</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+234 803 456 7890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@jaylawklassic.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon - Sat: 9AM - 6PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Jay Law Klassic Wears. All Rights Reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Quantumfixithub</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/2348034567890" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+ 
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1500);
+    });
+
+    // Sticky Header on Scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerHeight = document.getElementById('header').offsetHeight;
+          const targetPosition = target.offsetTop - headerHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close other open items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+
+    // Intersection Observer for Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for fade-in animation
+    document.querySelectorAll('.category-card, .service-detail, .pricing-card, .testimonial-card, .timeline-item, .faq-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeInObserver.observe(el);
+    });
+
+    // Parallax effect for page hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.page-hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+      }
+    });
+
+    // Pricing card hover effect - scale featured card
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        if (!this.classList.contains('featured')) {
+          pricingCards.forEach(c => {
+            if (c.classList.contains('featured')) {
+              c.style.transform = 'scale(1)';
+            }
+          });
+        }
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        pricingCards.forEach(c => {
+          if (c.classList.contains('featured')) {
+            c.style.transform = 'scale(1.05)';
+          }
+        });
+      });
+    });
+
+    // Service card click to scroll to detail
+    document.querySelectorAll('.category-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerHeight = document.getElementById('header').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn, .pricing-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.6);
+          width: 100px;
+          height: 100px;
+          margin-top: -50px;
+          margin-left: -50px;
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+        
+        const rect = this.getBoundingClientRect();
+        ripple.style.left = e.clientX - rect.left + 'px';
+        ripple.style.top = e.clientY - rect.top + 'px';
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        from {
+          transform: scale(0);
+          opacity: 1;
+        }
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Timeline animation on scroll
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateX(0)';
+          }, index * 150);
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-50px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      timelineObserver.observe(item);
+    });
+
+    // Testimonial card rotation effect
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let currentTestimonial = 0;
+
+    function highlightTestimonial() {
+      testimonialCards.forEach((card, index) => {
+        if (index === currentTestimonial) {
+          card.style.transform = 'scale(1.05) translateY(-10px)';
+          card.style.boxShadow = '0 20px 60px rgba(212, 175, 55, 0.4)';
+        } else {
+          card.style.transform = 'scale(1)';
+          card.style.boxShadow = '0 10px 40px var(--shadow)';
+        }
+      });
+      
+      currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+    }
+
+    // Auto-highlight testimonials every 4 seconds (optional - uncomment to enable)
+    // setInterval(highlightTestimonial, 4000);
+
+    // Service image hover zoom effect
+    document.querySelectorAll('.service-image').forEach(imageContainer => {
+      imageContainer.addEventListener('mouseenter', function() {
+        const badge = this.querySelector('.service-badge');
+        if (badge) {
+          badge.style.transform = 'scale(1.1) rotate(5deg)';
+        }
+      });
+      
+      imageContainer.addEventListener('mouseleave', function() {
+        const badge = this.querySelector('.service-badge');
+        if (badge) {
+          badge.style.transform = 'scale(1) rotate(0deg)';
+        }
+      });
+    });
+
+    // Add active state to current page in navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'services.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.style.color = 'var(--gold)';
+        link.style.fontWeight = '700';
+      }
+    });
+
+    // Performance optimization: Debounce scroll events
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Optimized scroll handler
+    const optimizedScroll = debounce(() => {
+      // Scroll percentage indicator
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      // You can add a progress bar here if needed
+      // progressBar.style.width = scrollPercentage + '%';
+    }, 10);
+
+    window.addEventListener('scroll', optimizedScroll);
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Disable animations for users who prefer reduced motion
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animation = 'none';
+        el.style.transition = 'none';
+      });
+    }
+
+    // Add loading effect to images
+    document.querySelectorAll('img').forEach(img => {
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.5s ease';
+      
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
+      });
+      
+      // Fallback if image is already cached
+      if (img.complete) {
+        img.style.opacity = '1';
+      }
+    });
+
+    // Console message for developers
+    console.log('%c🎨 Jay Law Klassic Wears - Services Page', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
+    console.log('%cElegance in Every Stitch', 'color: #5D4037; font-size: 14px;');
+    console.log('%cWebsite designed with premium coffee & gold theme', 'color: #999; font-size: 12px;');
+
+    // Prevent FOUC (Flash of Unstyled Content)
+    document.documentElement.style.visibility = 'visible';
+  </script>
+</body>
+</html>
