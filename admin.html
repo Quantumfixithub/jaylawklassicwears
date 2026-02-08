@@ -2056,76 +2056,65 @@
   </div>
 
   <!-- Add Product Modal -->
-<div class="modal" id="addProductModal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Add New Product</h2>
-      <button class="close-modal" onclick="closeModal('addProductModal')">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form id="addProductForm" onsubmit="addProduct(event)" enctype="multipart/form-data">
-        
-        <div class="form-group">
-          <label class="form-label">Product Name *</label>
-          <input type="text" class="form-input" name="name" placeholder="Enter product name" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Category *</label>
-          <select class="form-select" name="category" required>
-            <option value="">Select category</option>
-            <option value="Traditional">Traditional</option>
-            <option value="Evening Wear">Evening Wear</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Casual">Casual</option>
-            <option value="Formal">Formal</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Price (₦) *</label>
-          <input type="number" class="form-input" name="price" placeholder="0.00" required min="0" step="0.01">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Stock Quantity *</label>
-          <input type="number" class="form-input" name="stock" placeholder="0" required min="0">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Description</label>
-          <textarea class="form-textarea" name="description" placeholder="Product description"></textarea>
-        </div>
-
-        <!-- Image options -->
-        <div class="form-group">
-          <label class="form-label">Product Image URL</label>
-          <input type="url" class="form-input" name="imageUrl" placeholder="https://example.com/image.jpg">
-          <small style="color: var(--coffee-medium); font-size: 0.85em; margin-top: 5px; display: block;">
-            Paste an image URL from Unsplash or another image hosting service
-          </small>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Upload Product Image</label>
-          <input type="file" id="productImage" name="productImage" accept="image/*">
-          <small style="color: var(--coffee-medium); font-size: 0.85em; margin-top: 5px; display: block;">
-            Upload image from device
-          </small>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%;">
-          <i class="fas fa-plus"></i>
-          Add Product
+  <div class="modal" id="addProductModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add New Product</h2>
+        <button class="close-modal" onclick="closeModal('addProductModal')">
+          <i class="fas fa-times"></i>
         </button>
-      </form>
+      </div>
+      <div class="modal-body">
+        <form id="addProductForm" onsubmit="addProduct(event)">
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-input" name="name" placeholder="Enter product name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" name="category" required>
+              <option value="">Select category</option>
+              <option value="Traditional">Traditional</option>
+              <option value="Evening Wear">Evening Wear</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Casual">Casual</option>
+              <option value="Formal">Formal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Price (₦) *</label>
+            <input type="number" class="form-input" name="price" placeholder="0.00" required min="0" step="0.01">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Stock Quantity *</label>
+            <input type="number" class="form-input" name="stock" placeholder="0" required min="0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" name="description" placeholder="Product description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Product Image URL *</label>
+            <input type="url" class="form-input" name="image" placeholder="https://example.com/image.jpg" required>
+            <small style="color: var(--coffee-medium); font-size: 0.85em; margin-top: 5px; display: block;">
+              Paste an image URL from Unsplash or another image hosting service
+            </small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-plus"></i>
+            Add Product
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-
 
   <!-- Edit Product Modal -->
   <div class="modal" id="editProductModal">
@@ -3190,8 +3179,4 @@
     });
   </script>
 </body>
-
 </html>
-
-
-
