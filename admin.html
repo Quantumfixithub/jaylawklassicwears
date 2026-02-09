@@ -2101,12 +2101,20 @@
 
           <div class="form-group">
             <label class="form-label">Product Image URL *</label>
-            <input type="url" class="form-input" name="image" placeholder="https://example.com/image.jpg" required>
+            <input type="url" class="form-input" name="image" placeholder="https://example.com/image.jpg">
             <small style="color: var(--coffee-medium); font-size: 0.85em; margin-top: 5px; display: block;">
               Paste an image URL from Unsplash or another image hosting service
             </small>
           </div>
 
+		<div class="form-group">
+                    <label>Product Images</label>
+                    <div class="image-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click or drag images here</p>
+                        <input type="file" multiple accept="image/*" style="display: none;">
+                    </div>
+			
           <button type="submit" class="btn btn-primary" style="width: 100%;">
             <i class="fas fa-plus"></i>
             Add Product
@@ -2596,6 +2604,42 @@
       return `${prefix}-${random}`;
     }
 
+// Image Upload Preview
+            document.querySelectorAll('.image-upload').forEach(upload => {
+                upload.addEventListener('click', function() {
+                    const input = this.querySelector('input[type="file"]');
+                    if (input) input.click();
+                });
+                
+                const input = upload.querySelector('input[type="file"]');
+                if (input) {
+                    input.addEventListener('change', function(e) {
+                        const files = e.target.files;
+                        if (files.length > 0) {
+                            showNotification(`${files.length} file(s) selected`, 'success');
+                            const preview = upload.querySelector('p');
+                            if (preview) {
+                                preview.textContent = `${files.length} file(s) ready to upload`;
+                                preview.style.color = 'var(--success-green)';
+                            }
+                            
+                            // Create preview for first image
+                            if (files[0].type.startsWith('image/')) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    const icon = upload.querySelector('i');
+                                    if (icon) {
+                                        icon.style.display = 'none';
+                                    }
+                                    // You can add image preview here
+                                };
+                                reader.readAsDataURL(files[0]);
+                            }
+                        }
+                    });
+                }
+            });
+	  
     // ==================== INVENTORY FUNCTIONS ====================
     
     // Render Inventory Table
@@ -3180,3 +3224,4 @@
   </script>
 </body>
 </html>
+
